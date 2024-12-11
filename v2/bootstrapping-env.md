@@ -261,6 +261,8 @@ This section contains a list of the changes made in each version\.
 | 21 | 2\.149\.0 | Add condition to the file publishing role\. | 
 | 22 | 2\.160\.0 | Add sts:TagSession permissions to the trust policy of bootstrap IAM roles\. | 
 | 23 | 2\.161\.0 | Add cloudformation:RollbackStack and cloudformation:ContinueUpdateRollback permissions to the trust policy of the deploy IAM role\. This provides permissions for the cdk rollback command\. | 
+| 24 | 2\.165\.0 | Change the duration of days that noncurrent objects in the bootstrap bucket will be retained, from 365 to 30 days\. Since the new cdk gc command introduces the ability to delete objects in the bootstrap bucket, this new behavior ensures that deleted objects remain in the bootstrap bucket for 30 days instead of 365 days\. For more information on this change, see aws\-cdk PR [\#31949](https://github.com/aws/aws-cdk/pull/31949)\. | 
+| 25 | 2\.165\.0 | Add support to the bootstrap bucket for the removal of incomplete multipart uploads\. Incomplete multipart uploads will be deleted after 1 day\. For more information on this change, see aws\-cdk PR [\#31956](https://github.com/aws/aws-cdk/pull/31956)\. | 
 
 ## Upgrade from legacy to modern bootstrap template<a name="bootstrapping-template"></a>
 

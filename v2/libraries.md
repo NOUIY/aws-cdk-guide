@@ -16,7 +16,7 @@ The Constructs library, commonly referred to as `constructs`, is a library for d
 
 ## The AWS CDK API reference<a name="libraries-reference"></a>
 
-The [AWS CDK API reference](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) contains official reference documentation for the AWS CDK Library, including the AWS Construct Library and Constructs library\. A version of the API refernce is provided for each supported programming language\.
+The [AWS CDK API reference](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) contains official reference documentation for the AWS CDK Library, including the AWS Construct Library and Constructs library\. A version of the API reference is provided for each supported programming language\.
 + For AWS CDK Library \(`aws-cdk-lib`\) documentation, see [aws\-cdk\-lib module](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib-readme.html)\.
 + Documentation for constructs in the AWS Construct Library are organized by AWS service in the following format: `aws-cdk-lib.<service>`\. For example, construct documentation for Amazon Simple Storage Service \(Amazon S3\), can be found at [aws\-cdk\-lib\.aws\_s3 module](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_s3-readme.html)\.
 + For Constructs library \(constructs\) documentation, see [constructs module](https://docs.aws.amazon.com/cdk/api/v2/docs/constructs-readme.html)\.

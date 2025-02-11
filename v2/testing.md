@@ -1,6 +1,6 @@
 # Test AWS CDK applications<a name="testing"></a>
 
-With the AWS CDK, your infrastructure can be as testable as any other code you write\. The standard approach to testing AWS CDK apps uses the AWS CDK's [assertions](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.assertions-readme.html) module and popular test frameworks like [Jest](https://jestjs.io/) for TypeScript and JavaScript or [Pytest](https://docs.pytest.org/en/6.2.x/) for Python\.
+With the AWS CDK, your infrastructure can be as testable as any other code you write\. You can test in the cloud and locally\. This topic addresses how to test in the cloud\. For guidance on local testing see [Locally test and build AWS CDK applications with the AWS SAM CLI](testing-locally.md)\. The standard approach to testing AWS CDK apps uses the AWS CDK's [assertions](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.assertions-readme.html) module and popular test frameworks like [Jest](https://jestjs.io/) for TypeScript and JavaScript or [Pytest](https://docs.pytest.org/en/6.2.x/) for Python\.
 
 There are two categories of tests that you can write for AWS CDK apps\.
 +  **Fine\-grained assertions** test specific aspects of the generated AWS CloudFormation template, such as "this resource has this property with this value\." These tests can detect regressions\. They're also useful when you're developing new features using test\-driven development\. \(You can write a test first, then make it pass by writing a correct implementation\.\) Fine\-grained assertions are the most frequently used tests\.
@@ -19,7 +19,7 @@ First, create an empty CDK application project using the CDK Toolkit and install
 #### [ TypeScript ]
 
 ```
-mkdir state-machine && cd state-machine
+$ mkdir state-machine && cd state-machine
 cdk init --language=typescript
 npm install --save-dev jest @types/jest
 ```
@@ -27,7 +27,7 @@ npm install --save-dev jest @types/jest
 Create a directory for your tests\.
 
 ```
-mkdir test
+$ mkdir test
 ```
 
 Edit the project's `package.json` to tell NPM how to run Jest, and to tell Jest what kinds of files to collect\. The necessary changes are as follows\. 
@@ -59,15 +59,15 @@ These changes are shown in the following outline\. Place the new text where indi
 #### [ JavaScript ]
 
 ```
-mkdir state-machine && cd state-machine
-cdk init --language=javascript
-npm install --save-dev jest
+$ mkdir state-machine && cd state-machine
+$ cdk init --language=javascript
+$ npm install --save-dev jest
 ```
 
 Create a directory for your tests\.
 
 ```
-mkdir test
+$ mkdir test
 ```
 
 Edit the project's `package.json` to tell NPM how to run Jest, and to tell Jest what kinds of files to collect\. The necessary changes are as follows\. 
@@ -98,19 +98,19 @@ These changes are shown in the following outline\. Place the new text where indi
 #### [ Python ]
 
 ```
-mkdir state-machine && cd state-machine
-cdk init --language=python
-source .venv/bin/activate # On Windows, run '.\venv\Scripts\activate' instead
-python -m pip install -r requirements.txt
-python -m pip install -r requirements-dev.txt
+$ mkdir state-machine && cd state-machine
+$ cdk init --language=python
+$ source .venv/bin/activate # On Windows, run '.\venv\Scripts\activate' instead
+$ python -m pip install -r requirements.txt
+$ python -m pip install -r requirements-dev.txt
 ```
 
 ------
 #### [ Java ]
 
 ```
-mkdir state-machine && cd-state-machine
-cdk init --language=java
+$ mkdir state-machine && cd-state-machine
+$ cdk init --language=java
 ```
 
 Open the project in your preferred Java IDE\. \(In Eclipse, use **File** > **Import** > Existing Maven Projects\.\)
@@ -119,8 +119,8 @@ Open the project in your preferred Java IDE\. \(In Eclipse, use **File** > **Imp
 #### [ C\# ]
 
 ```
-mkdir state-machine && cd-state-machine
-cdk init --language=csharp
+$ mkdir state-machine && cd-state-machine
+$ cdk init --language=csharp
 ```
 
 Open `src\StateMachine.sln` in Visual Studio\.
@@ -495,28 +495,28 @@ For reference, here are the commands you use to run tests in your AWS CDK app\. 
 #### [ TypeScript ]
 
 ```
-tsc && npm test
+$ tsc && npm test
 ```
 
 ------
 #### [ JavaScript ]
 
 ```
-npm test
+$ npm test
 ```
 
 ------
 #### [ Python ]
 
 ```
-python -m pytest
+$ python -m pytest
 ```
 
 ------
 #### [ Java ]
 
 ```
-mvn compile && mvn test
+$ mvn compile && mvn test
 ```
 
 ------
@@ -527,7 +527,7 @@ Build your solution \(F6\) to discover the tests, then run the tests \(**Test** 
 Or:
 
 ```
-dotnet test src
+$ dotnet test src
 ```
 
 ------

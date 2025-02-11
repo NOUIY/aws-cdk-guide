@@ -67,55 +67,7 @@ Issue `cdk version` to display the version of the CDK CLI\. Provide this informa
 
 ## Version reporting<a name="version_reporting"></a>
 
-To gain insight into how the AWS CDK is used, the constructs used by AWS CDK applications are collected and reported by using a resource identified as `AWS::CDK::Metadata`\. This resource is added to AWS CloudFormation templates, and can easily be reviewed\. This information can also be used by AWS to identify stacks using a construct with known security or reliability issues\. It can also be used to contact their users with important information\.
-
-**Note**  
-Before version 1\.93\.0, the AWS CDK reported the names and versions of the modules loaded during synthesis, instead of the constructs used in the stack\.
-
-By default, the AWS CDK reports the use of constructs in the following NPM modules that are used in the stack:
-+ AWS CDK core module
-+ AWS Construct Library modules
-+ AWS Solutions Constructs module
-+ AWS Render Farm Deployment Kit module
-
-The `AWS::CDK::Metadata` resource looks something like the following\.
-
-```
-CDKMetadata:
-  Type: "AWS::CDK::Metadata"
-  Properties:
-    Analytics: "v2:deflate64:H4sIAND9SGAAAzXKSw5AMBAA0L1b2PdzBYnEAdio3RglglY60zQi7u6TWL/XKmNUlxeQSOKwaPTBqrNhwEWU3hGHiCzK0dWWfAxoL/Fd8mvk+QkS/0X6BdjnCdgmOOQKWz+AqqLDt2Y3YMnLYWwAAAA="
-```
-
-The `Analytics` property is a gzipped, base64\-encoded, prefix\-encoded list of the constructs in the stack\.
-
-### Opt out of version reporting<a name="version_reporting_out"></a>
-
-You can opt out of version reporting by using the CDK CLI or by configuring your project's `cdk.json` file\.
-
-**To opt out of version reporting using the CDK CLI**
-+ Use the `--no-version-reporting` option with any CDK CLI command to opt out for a single command\. The following is an example of opting out during template synthesis:
-
-  ```
-  $ cdk synth --no-version-reporting
-  ```
-
-  Since the AWS CDK synthesizes templates automatically when you run `cdk deploy`, you should also use `--no-version-reporting` with the `cdk deploy` command\.
-
-**To opt out of version reporting by configuring the `cdk.json` file**
-+ Set `versionReporting` to `false` in `./cdk.json` or `~/.cdk.json`\. This opts you out by default\. The following is an example:
-
-  ```
-  {
-    "app": "...",
-    "versionReporting": false
-  }
-  ```
-
-  After configuring, you can override this behavior and opt in by specifying `--version-reporting` on an individual command\.
-
-**Note**  
-When you opt out of version reporting, the AWS CDK will not collect or report data on which constructs you are using\. Because of this, the AWS CDK will not be able to identify if you've been impacted by security issues and will not send you notifications for them\.
+To gain insight into how the AWS CDK is used, the constructs used by AWS CDK applications are collected and reported by using a resource identified as `AWS::CDK::Metadata`\. To learn more, see [Configure AWS CDK usage data reporting](usage-data.md)\.
 
 ## Authentication with AWS<a name="cli_auth"></a>
 

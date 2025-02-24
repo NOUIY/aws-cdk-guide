@@ -74,6 +74,7 @@ sponsored by Amazon.
    + [AWS CDK policy validation at synthesis time](policy-validation-synthesis.md)
    + [Continuous integration and delivery (CI/CD) using CDK Pipelines](cdk_pipeline.md)
    + [Troubleshoot AWS CDK deployments](deploy-troubleshoot.md)
++ [Perform programmatic actions using the CDK Toolkit Library](toolkit-library.md)
 + [Test AWS CDK applications](testing.md)
    + [Locally test and build AWS CDK applications with the AWS SAM CLI](testing-locally.md)
       + [Getting started with locally testing](testing-locally-getting-started.md)

@@ -26,3 +26,5 @@ await cdk.deploy(cloudAssembly, {
 ## Get started with the CDK Toolkit Library<a name="toolkit-library-gs"></a>
 
 To get started, see the `[ReadMe](https://www.npmjs.com/package/@aws-cdk/toolkit-lib)` in the *@aws\-cdk/toolkit\-lib* `npm` package\.
+
+For API reference information, see the [CDK Toolkit Library API reference](https://docs.aws.amazon.com/cdk/api/toolkit-lib/)\.

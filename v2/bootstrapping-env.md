@@ -82,6 +82,9 @@ powershell "cdk bootstrap --show-template | Out-File -encoding utf8 bootstrap-te
 
 ------
 
+**Note**  
+If CDK notices are appearing in your AWS CloudFormation template output, provide the `--no-notices` option with your command\.
+
 To deploy this template using the CDK CLI, you can run the following:
 
 ```

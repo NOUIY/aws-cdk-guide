@@ -63,9 +63,49 @@ The path to the CloudFormation template to compare a CDK stack with\.
 
 ### Diff against the currently deployed stack named MyStackName<a name="ref-cli-cmd-diff-examples-1"></a>
 
+The CDK CLI uses the following symbols in the diff output:
++ `[+]` – Identifies code or resources that will be added if you deploy your changes\.
++ `[-]` – Identifies code or resources that will be removed if you deploy your changes\.
++ `[~]` – Identifies a resource or property that will be modified if you deploy your changes\.
+
+The following is an example that shows a diff of local changes to a Lambda function:
+
 ```
-$ cdk diff MyStackName --app='node bin/main.js'
+$ cdk diff MyStackName
+start: Building asset-hash:account-Region
+success: Built asset-hash:account-Region
+start: Publishing asset-hash:account-Region
+success: Published asset-hash:account-Region
+Hold on while we create a read-only change set to get a diff with accurate replacement information (use --no-change-set to use a less accurate but faster template-only diff)
+Stack MyStackName
+Resources
+[~] AWS::Lambda::Function HelloWorldFunction resource-logical-ID
+ └─ [~] Code
+     └─ [~] .ZipFile:
+         ├─ [-] 
+        exports.handler = async function(event) {
+          return {
+            statusCode: 200,
+            body: JSON.stringify('Hello World!'),
+          };
+        };
+      
+         └─ [+] 
+        exports.handler = async function(event) {
+          return {
+            statusCode: 200,
+            body: JSON.stringify('Hello from CDK!'),
+          };
+        };
+      
+
+
+✨  Number of stacks with differences: 1
 ```
+
+A `[~]` indicator for resources that will be modified does not always mean a full resource replacement:
++ Some resource properties, like `Code`, will update the resource\.
++ Some resource properties, like `FunctionName`, may cause a full resource replacement\.
 
 ### Diff against a specific CloudFormation template<a name="ref-cli-cmd-diff-examples-2"></a>
 

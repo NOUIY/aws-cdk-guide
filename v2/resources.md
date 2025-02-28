@@ -553,9 +553,9 @@ Although you can use an external resource anywhere you'd use a similar resource 
 
 The logical names of resources in AWS CloudFormation are different from the names of resources that are shown in the AWS Management Console after they're deployed by AWS CloudFormation\. The AWS CDK calls these final names *physical names*\.
 
-For example, AWS CloudFormation might create the Amazon S3 bucket with the logical ID `Stack2MyBucket4DD88B4F` from the previous example with the physical name `stack2MyBucket4dd88b4f-iuv1rbv9z3to`\.
+For example, AWS CloudFormation might create the Amazon S3 bucket with the logical ID `Stack2MyBucket4DD88B4F` and the physical name `stack2MyBucket4dd88b4f-iuv1rbv9z3to`\.
 
-You can specify a physical name when creating constructs that represent resources by using the property *<resourceType>*Name\. The following example creates an Amazon S3 bucket with the physical name `MyBucket`\.
+You can specify a physical name when creating constructs that represent resources by using the property *<resourceType>*Name\. The following example creates an Amazon S3 bucket with the physical name `amzn-s3-demo-bucket`\.
 
 ------
 #### [ TypeScript ]

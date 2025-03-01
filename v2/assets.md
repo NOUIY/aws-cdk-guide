@@ -1063,7 +1063,7 @@ const asset = new DockerImageAsset(this, 'MyBuildImage', {
 #### [ Python ]
 
 ```
-asset = DockerImageAsset(self, "MyBulidImage",
+asset = DockerImageAsset(self, "MyBuildImage",
     directory=os.path.join(dirname, "my-image"),
     build_args=dict(HTTP_PROXY="http://10.20.30.2:1234"))
 ```

@@ -96,6 +96,15 @@ Perform a deployment even if your CDK app doesn’t contain any stacks\.
 This option is helpful in the following scenario: You may have an app with multiple environments, such as `dev` and `prod`\. When starting development, your prod app may not have any resources, or the resources may be commented out\. This will result in a deployment error with a message stating that the app has no stacks\. Use `--ignore-no-stacks` to bypass this error\.  
 *Default value*: `false`
 
+`--import-existing-resources BOOLEAN`  <a name="ref-cli-cmd-deploy-options-import-existing-resources"></a>
+Import existing, unmanaged AWS CloudFormation resources from your AWS account\.  
+When you use this option, resources from your synthesized AWS CloudFormation template with the same custom name as existing unmanaged resources in the same account will be imported into your stack\.  
+You can use this option to import existing resources into new or existing stacks\.  
+You can import existing resources and deploy new resources in the same `cdk deploy` command\.  
+To learn more about custom names, see [Name type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html) in the *AWS CloudFormation User Guide*\.  
+To learn more about the `ImportExistingResources` CloudFormation parameter, see [AWS CloudFormation simplifies resource import with a new parameter for ChangeSets](https://aws.amazon.com/about-aws/whats-new/2023/11/aws-cloudformation-import-parameter-changesets/)\.  
+For more information on using this option, see [Import existing resources](https://github.com/aws/aws-cdk-cli/tree/main/packages/aws-cdk#import-existing-resources) in the *aws\-cdk\-cli GitHub repository*\.
+
 `--logs BOOLEAN`  <a name="ref-cli-cmd-deploy-options-logs"></a>
 Show Amazon CloudWatch log in the standard output \(`stdout`\) for all events from all resources in the selected stacks\.  
 This option is only compatible with `--watch`\.  

@@ -11,7 +11,7 @@ Bootstrapping prepares your AWS environment by provisioning specific AWS resourc
 
 ## How does bootstrapping work?<a name="bootstrapping-how"></a>
 
-Resources and their configuration that are used by the CDK are defined in an AWS CloudFormation template\. This template is created and managed by the CDK team\. For the latest version of this template, see `[bootstrap\-template\.yaml](https://github.com/aws/aws-cdk/blob/main/packages/aws-cdk/lib/api/bootstrap/bootstrap-template.yaml)` in the *aws\-cdk GitHub repository*\.
+Resources and their configuration that are used by the CDK are defined in an AWS CloudFormation template\. This template is created and managed by the CDK team\. For the latest version of this template, see `[bootstrap\-template\.yaml](https://github.com/aws/aws-cdk-cli/blob/main/packages/aws-cdk/lib/api/bootstrap/bootstrap-template.yaml)` in the *aws\-cdk\-cli GitHub repository*\.
 
 To bootstrap an environment, you use the AWS CDK Command Line Interface \(AWS CDK CLI\) `cdk bootstrap` command\. The CDK CLI retrieves the template and deploys it to AWS CloudFormation as a stack, known as the *bootstrap stack*\. By default, the stack name is `CDKToolkit`\. By deploying this template, CloudFormation provisions the resources in your environment\. After deployment, the bootstrap stack will appear in the AWS CloudFormation console of your environment\.
 

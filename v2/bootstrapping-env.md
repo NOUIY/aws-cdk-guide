@@ -58,7 +58,7 @@ For more information on the `cdk bootstrap` command and supported options, see [
 
 ### Use any AWS CloudFormation tool<a name="bootstrapping-howto-cfn"></a>
 
-You can copy the [bootstrap template](https://github.com/aws/aws-cdk/blob/main/packages/aws-cdk/lib/api/bootstrap/bootstrap-template.yaml) from the *aws\-cdk GitHub repository* or obtain the template with the `cdk bootstrap --show-template` command\. Then, use any AWS CloudFormation tool to deploy the template into your environment\.
+You can copy the [bootstrap template](https://github.com/aws/aws-cdk-cli/blob/main/packages/aws-cdk/lib/api/bootstrap/bootstrap-template.yaml) from the *aws\-cdk\-cli GitHub repository* or obtain the template with the `cdk bootstrap --show-template` command\. Then, use any AWS CloudFormation tool to deploy the template into your environment\.
 
 With this method, you can use AWS CloudFormation StackSets or AWS Control Tower\. You can also use the AWS CloudFormation console or the AWS Command Line Interface \(AWS CLI\)\. You can make modifications to your template before you deploy it\. This method may be more flexible and suitable for large\-scale deployments\.
 

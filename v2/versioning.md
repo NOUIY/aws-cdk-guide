@@ -13,23 +13,21 @@ Minor and patch releases are backward compatible\. The code written in a previou
 
 ## AWS CDK CLI compatibility<a name="cdk_toolkit_versioning"></a>
 
-The AWS CDK CLI is *always* compatible with construct libraries of a semantically *lower* or *equal* version number\. It is, therefore, always safe to upgrade the AWS CDK CLI within the same major version\.
+Each version of the main AWS CDK library \(`aws-cdk-lib`\) is compatible with the AWS CDK CLI \(`aws-cdk-cli`\) version that was current at the time of the CDK library's release\. It is also compatible with any newer version of the CDK CLI\. Each version of the CDK library maintains this compatibility until the library's *End of Life* date\. Therefore, as long as you're using a supported CDK library version, it is always safe to upgrade your CDK CLI version\.
 
-The AWS CDK CLI is *not always* compatible with construct libraries of a semantically *higher* version\. Compatibility depends on whether the same cloud assembly schema version is employed by the two components\. The AWS CDK framework generates a cloud assembly during synthesis and the AWS CDK CLI consumes it for deployment\. The schema that defines the format of the cloud assembly is strictly specified and versioned\.
+Each version of the CDK library may also work with CDK CLI versions older than the version that was current at the time of the CDK library's release\. However, this is not guaranteed\. Compatibility depends on the CDK library's cloud assembly schema version\. The AWS CDK generates a cloud assembly during synthesis and the CDK CLI consumes it for deployment\. The schema that defines the format of the cloud assembly is strictly specified and versioned\. Therefore, an older version of the CDK CLI would need to support the cloud assembly schema version of the CDK library for them to be compatible\.
 
-AWS construct libraries using a given cloud assembly schema version are compatible with AWS CDK CLI versions using that schema version or later\. This might include releases of the AWS CDK CLI that are *earlier than* a given construct library release\.
-
-When the cloud assembly version required by the construct library is not compatible with the version supported by the AWS CDK CLI, you receive an error message like the following:
+When the cloud assembly version required by the CDK library is not compatible with the version supported by the CDK CLI, you receive an error message like the following:
 
 ```
 Cloud assembly schema version mismatch: Maximum schema version supported is 3.0.0, but found 4.0.0.
     Please upgrade your CLI in order to interact with this app.
 ```
 
-To resolve this error, update the AWS CDK CLI to a version compatible with the required cloud assembly version, or to the latest available version\. The alternative \(downgrading the construct library modules your app uses\) is generally not recommended\.
+To resolve this error, update the CDK CLI to a version compatible with the required cloud assembly version, or to the latest available version\. The alternative \(downgrading the construct library modules your app uses\) is generally not recommended\.
 
 **Note**  
-For more details on the cloud assembly schema, see [Cloud Assembly Versioning](https://github.com/aws/aws-cdk/tree/master/packages/%40aws-cdk/cloud-assembly-schema#versioning)\.
+For more information on the exact combinations of versions that work together, see the [compatibility table](https://github.com/aws/aws-cdk-cli/blob/main/COMPATIBILITY.md) in the *aws\-cdk\-cli GitHub repository*\.
 
 ## AWS Construct Library versioning<a name="aws_construct_lib_stability"></a>
 

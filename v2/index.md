@@ -73,6 +73,7 @@ sponsored by Amazon.
 + [Deploy AWS CDK applications](deploy.md)
    + [AWS CDK policy validation at synthesis time](policy-validation-synthesis.md)
    + [Continuous integration and delivery (CI/CD) using CDK Pipelines](cdk_pipeline.md)
+   + [Build and deploy container image assets in CDK apps](build-containers.md)
    + [Troubleshoot AWS CDK deployments](deploy-troubleshoot.md)
 + [Perform programmatic actions using the CDK Toolkit Library](toolkit-library.md)
 + [Test AWS CDK applications](testing.md)

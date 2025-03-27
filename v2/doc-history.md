@@ -7,6 +7,7 @@ The table below represents significant documentation milestones\. We fix errors 
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Document bootstrap template versions v26 and v27](#doc-history) | For more information, see [Bootstrap template version history](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping-env.html#bootstrap-template-history)\. | March 27, 2025 | 
 | [Add documentation for building and deploying container image assets](#doc-history) | When you build container image assets with the AWS CDK, Docker is utilized by default to perform these actions\. If you want to use a different container management tool, you can replace Docker\. For more information, see [Build and deploy container image assets in CDK apps](https://docs.aws.amazon.com/cdk/v2/guide/build-containers.html)\. | March 21, 2025 | 
 | [Add documentation for CDK Migrate feature](#doc-history) | Use the AWS CDK CLI `cdk migrate` command to migrate deployed AWS resources, deployed AWS CloudFormation stacks, and local AWS CloudFormation templates to AWS CDK\. For more information, see [Migrate to AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/migrate.html)\.  | February 2, 2024 | 
 | [IAM best practices updates](#doc-history) | Updated guide to align with the IAM best practices\. For more information, see [Security best practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)\. | March 23, 2023 | 

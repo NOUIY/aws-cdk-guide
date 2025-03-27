@@ -266,6 +266,8 @@ This section contains a list of the changes made in each version\.
 | 23 | 2\.161\.0 | Add cloudformation:RollbackStack and cloudformation:ContinueUpdateRollback permissions to the trust policy of the deploy IAM role\. This provides permissions for the cdk rollback command\. | 
 | 24 | 2\.165\.0 | Change the duration of days that noncurrent objects in the bootstrap bucket will be retained, from 365 to 30 days\. Since the new cdk gc command introduces the ability to delete objects in the bootstrap bucket, this new behavior ensures that deleted objects remain in the bootstrap bucket for 30 days instead of 365 days\. For more information on this change, see aws\-cdk PR [\#31949](https://github.com/aws/aws-cdk/pull/31949)\. | 
 | 25 | 2\.165\.0 | Add support to the bootstrap bucket for the removal of incomplete multipart uploads\. Incomplete multipart uploads will be deleted after 1 day\. For more information on this change, see aws\-cdk PR [\#31956](https://github.com/aws/aws-cdk/pull/31956)\. | 
+| 26 | 2\.1002\.0 | Add two deletion\-related policies \(UpdateReplacePolicy and DeletionPolicy to the FileAssetsBucketEncryptionKey\) resource\. These policies ensure that the old AWS KMS key resource will be properly deleted when the bootstrap stack is updated or deleted\. For more information on this change, see aws\-cdk\-cli PR [\#100](https://github.com/aws/aws-cdk-cli/pull/100)\. | 
+| 27 | 2\.1003\.0 | Add new Amazon ECR resource policy to grant Amazon EMR Serverless specific permissions for retrieving container images\. For more information on this change, see aws\-cdk\-cli PR [\#112](https://github.com/aws/aws-cdk-cli/pull/112)\. | 
 
 ## Upgrade from legacy to modern bootstrap template<a name="bootstrapping-template"></a>
 

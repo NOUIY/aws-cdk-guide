@@ -1,10 +1,10 @@
 # Introduction to AWS CDK stages<a name="stages"></a>
 
-An AWS Cloud Development Kit \(AWS CDK\) *stage* represents a group of one or more CDK stacks that are configured to deploy together\. Use stages to deploy the same grouping of stacks to multiple environments, such as development, testing, and production\.
+An AWS Cloud Development Kit (AWS CDK) *stage* represents a group of one or more CDK stacks that are configured to deploy together. Use stages to deploy the same grouping of stacks to multiple environments, such as development, testing, and production.
 
-To configure a CDK stage, import and use the `[Stage](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stage.html)` construct\.
+To configure a CDK stage, import and use the `[Stage](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stage.html)` construct.
 
-The following is a basic example that defines a CDK stage named `MyAppStage`\. We add two CDK stacks, named `AppStack` and `DatabaseStack` to our stage\. For this example, `AppStack` contains application resources and `DatabaseStack` contains database resources\. We then create two instances of `MyAppStage`, for development and production environments:
+The following is a basic example that defines a CDK stage named `MyAppStage`. We add two CDK stacks, named `AppStack` and `DatabaseStack` to our stage. For this example, `AppStack` contains application resources and `DatabaseStack` contains database resources. We then create two instances of `MyAppStage`, for development and production environments:
 
 ------
 #### [ TypeScript ]
@@ -350,7 +350,7 @@ public class CdkDemoAppApp {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 In `cdk-demo-app/src/CdkDemoApp/AppStack.cs`:
 
@@ -546,7 +546,7 @@ func env() *awscdk.Environment {
 
 ------
 
-When we run `cdk synth`, two cloud assemblies are created in `cdk.out`\. These two cloud assemblies contain the synthesized AWS CloudFormation template and assets for each stage\. The following is snippet of our project directory:
+When we run `cdk synth`, two cloud assemblies are created in `cdk.out`. These two cloud assemblies contain the synthesized AWS CloudFormation template and assets for each stage. The following is snippet of our project directory:
 
 ------
 #### [ TypeScript ]
@@ -672,7 +672,7 @@ cdk-demo-app
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 
 
@@ -744,7 +744,7 @@ Prod/AppStack (Prod-AppStack)
 Prod/DatabaseStack (Prod-DatabaseStack)
 ```
 
-To deploy a specific stage, we run `cdk deploy` and provide the stacks to deploy\. The following is an example that uses the `*` wildcard to deploy both stacks in our `Dev` stage:
+To deploy a specific stage, we run `cdk deploy` and provide the stacks to deploy. The following is an example that uses the `*` wildcard to deploy both stacks in our `Dev` stage:
 
 ```
 $ cdk deploy "Dev/*"

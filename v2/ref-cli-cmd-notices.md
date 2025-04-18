@@ -1,13 +1,13 @@
 # cdk notices<a name="ref-cli-cmd-notices"></a>
 
-Display notices for your CDK application\.
+Display notices for your CDK application.
 
-Notices can include important messages regarding security vulnerabilities, regressions, and usage of unsupported versions\.
+Notices can include important messages regarding security vulnerabilities, regressions, and usage of unsupported versions.
 
-This command displays relevant notices, regardless of whether they have been acknowledged or not\. Relevant notices may also appear after every command by default\.
+This command displays relevant notices, regardless of whether they have been acknowledged or not. Relevant notices may also appear after every command by default.
 
 You can suppress notices in the following ways:
-+ Through command options\. The following is an example:
++ Through command options. The following is an example:
 
   ```
   $ cdk deploy --no-notices
@@ -22,7 +22,7 @@ You can suppress notices in the following ways:
     }
   }
   ```
-+ Acknowledge each notice with the `cdk acknowledge` command\.
++ Acknowledge each notice with the `cdk acknowledge` command.
 
 ## Usage<a name="ref-cli-cmd-notices-usage"></a>
 
@@ -32,10 +32,10 @@ $ cdk notices <options>
 
 ## Options<a name="ref-cli-cmd-notices-options"></a>
 
-For a list of global options that work with all CDK CLI commands, see [Global options](ref-cli-cmd.md#ref-cli-cmd-options)\.
+For a list of global options that work with all CDK CLI commands, see [Global options](ref-cli-cmd.md#ref-cli-cmd-options).
 
 `--help, -h BOOLEAN`  <a name="ref-cli-cmd-notices-options-help"></a>
-Show command reference information for the `cdk notices` command\.
+Show command reference information for the `cdk notices` command.
 
 ## Examples<a name="ref-cli-cmd-notices-examples"></a>
 

@@ -2,12 +2,12 @@
 
 You can use the AWS SAM CLI to locally test your AWS CDK applications by running the following commands from the project root directory of your AWS CDK application:
 + [sam local invoke](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-invoke.html)
-+ [sam local start\-api](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-start-api.html)
-+ [sam local start\-lambda](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-start-lambda.html)
++ [sam local start-api](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-start-api.html)
++ [sam local start-lambda](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-start-lambda.html)
 
-Before you run any of the sam local commands with a AWS CDK application, you must run `cdk synth`\.
+Before you run any of the sam local commands with a AWS CDK application, you must run `cdk synth`.
 
-When running sam local invoke you need the function construct identifier that you want to invoke, and the path to your synthesized AWS CloudFormation template\. If your application uses nested stacks, to resolve naming conflicts, you also need the stack name where the function is defined\.
+When running sam local invoke you need the function construct identifier that you want to invoke, and the path to your synthesized AWS CloudFormation template. If your application uses nested stacks, to resolve naming conflicts, you also need the stack name where the function is defined.
 
 **Usage:**
 

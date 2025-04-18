@@ -1,12 +1,12 @@
 # Define permissions for L2 constructs with the AWS CDK<a name="define-iam-l2"></a>
 
-Define AWS Identity and Access Management \(IAM\) roles and policies for L2 constructs when using the AWS Cloud Development Kit \(AWS CDK\)\.
+Define AWS Identity and Access Management (IAM) roles and policies for L2 constructs when using the AWS Cloud Development Kit (AWS CDK).
 
 ## Use grant methods to define permissions<a name="define-iam-l2-grant"></a>
 
-When you define your infrastructure using L2 constructs from the AWS Construct Library, you can use the provided *grant methods* to specify the permissions your resources will require\. The AWS CDK will automatically create the IAM roles needed for all AWS resources that require them\.
+When you define your infrastructure using L2 constructs from the AWS Construct Library, you can use the provided *grant methods* to specify the permissions your resources will require. The AWS CDK will automatically create the IAM roles needed for all AWS resources that require them.
 
-The following is an example that defines permissions between an AWS Lambda function and Amazon Simple Storage Service \(Amazon S3\) bucket\. Here, the `grantRead` method of the Bucket L2 construct is used to define these permissions:
+The following is an example that defines permissions between an AWS Lambda function and Amazon Simple Storage Service (Amazon S3) bucket. Here, the `grantRead` method of the Bucket L2 construct is used to define these permissions:
 
 ------
 #### [ TypeScript ]
@@ -157,7 +157,7 @@ public class CdkDemoStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -225,9 +225,9 @@ func NewCdkDemoStack(scope constructs.Construct, id string, props *CdkDemoStackP
 
 ------
 
-When you use grant methods of L2 constructs to define permissions between resources, the AWS CDK will create roles with least privilege policies based on the method you specify\. As a security best practice, we recommend that you use the method that applies only the permissions that you require\. For example, if you only need to grant permissions for a Lambda function to read from an Amazon S3 bucket, use the `grantRead` method instead of `grantReadWrite`\.
+When you use grant methods of L2 constructs to define permissions between resources, the AWS CDK will create roles with least privilege policies based on the method you specify. As a security best practice, we recommend that you use the method that applies only the permissions that you require. For example, if you only need to grant permissions for a Lambda function to read from an Amazon S3 bucket, use the `grantRead` method instead of `grantReadWrite`.
 
-For each method that you use, the CDK creates a unique IAM role for the specified resources\. If necessary, you can also directly modify the policy that will be attached to the role\. The following is an example:
+For each method that you use, the CDK creates a unique IAM role for the specified resources. If necessary, you can also directly modify the policy that will be attached to the role. The following is an example:
 
 ------
 #### [ TypeScript ]
@@ -291,7 +291,7 @@ handler.addToRolePolicy(PolicyStatement.Builder.create()
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK.AWS.IAM;
@@ -332,19 +332,19 @@ func NewCdkDemoStack(scope constructs.Construct, id string, props *CdkDemoStackP
 
 ------
 
-However, we recommend that you use the `grant` methods when available\.
+However, we recommend that you use the `grant` methods when available.
 
 ## Manually create and use IAM roles<a name="define-iam-l2-manual"></a>
 
-If you prefer not to use the CDK `grant` methods to create and manage permissions, you must manually create and configure them\. You can create IAM roles using the AWS Management Console, AWS CLI, or AWS SDKs\. Then, you can pass them into your CDK application manually or use the *role customization* feature\.
+If you prefer not to use the CDK `grant` methods to create and manage permissions, you must manually create and configure them. You can create IAM roles using the AWS Management Console, AWS CLI, or AWS SDKs. Then, you can pass them into your CDK application manually or use the *role customization* feature.
 
 ### Reference and manage all roles manually<a name="define-iam-l2-manual-role"></a>
 
-Constructs that require a role have an optional `role` property that you can use to pass in a role object\.
+Constructs that require a role have an optional `role` property that you can use to pass in a role object.
 
 **To reference a role manually**
 
-1. Use `Role.fromRoleName()` to reference your pre\-existing role\. The following is an example:
+1. Use `Role.fromRoleName()` to reference your pre-existing role. The following is an example:
 
    ```
    const existingRole = Role.fromRoleName(stack, 'Role', 'my-pre-existing-role', {
@@ -352,7 +352,7 @@ Constructs that require a role have an optional `role` property that you can use
    }
    ```
 
-1. Pass the pre\-existing role when defining your resource\. The following is an example:
+1. Pass the pre-existing role when defining your resource. The following is an example:
 
    ```
    const handler = new lambda.Function(stack, 'Handler', { runtime: lambda.Runtime.NODEJS_20_XZ, handler:
@@ -362,11 +362,11 @@ Constructs that require a role have an optional `role` property that you can use
 
 ### Use the role customization feature<a name="define-iam-l2-manual-customization"></a>
 
-The AWS CDK *role customization* feature generates a report of roles and policies in your CDK app\. You can use this feature to generate a report\. Then you can substitute pre\-created roles for them\.
+The AWS CDK *role customization* feature generates a report of roles and policies in your CDK app. You can use this feature to generate a report. Then you can substitute pre-created roles for them.
 
 **To use the role customization feature**
 
-1. Add `Role.customizeRoles()` somewhere towards the top of your CDK application\. The following is an example:
+1. Add `Role.customizeRoles()` somewhere towards the top of your CDK application. The following is an example:
 
    ```
    const stack = new Stack(app, 'LambdaStack');
@@ -390,7 +390,7 @@ The AWS CDK *role customization* feature generates a report of roles and policie
    bucket.grantRead(handler);
    ```
 
-1. When you synthesize your application, the CDK will throw an error, indicating that you need to provide the pre\-created role name to `Role.customizeRoles()`\. The following is an example of the generated report:
+1. When you synthesize your application, the CDK will throw an error, indicating that you need to provide the pre-created role name to `Role.customizeRoles()`. The following is an example of the generated report:
 
    ```
    <missing role> (LambdaStack/Handler/ServiceRole)
@@ -431,7 +431,7 @@ The AWS CDK *role customization* feature generates a report of roles and policie
    ]
    ```
 
-1. Once the role is created, you can pass it into your application for the resource that it applies to\. For example, if the name of the role created for `LambdaStack/Handler/ServiceRole` is `lambda-service-role`, you would update your CDK app as follows:
+1. Once the role is created, you can pass it into your application for the resource that it applies to. For example, if the name of the role created for `LambdaStack/Handler/ServiceRole` is `lambda-service-role`, you would update your CDK app as follows:
 
    ```
    const stack = new Stack(app, 'LambdaStack');
@@ -444,6 +444,6 @@ The AWS CDK *role customization* feature generates a report of roles and policie
    });
    ```
 
-   The CDK will now use the pre\-created role name anywhere that the role is referenced in the CDK application\. It will also continue to generate the report so that any future policy changes can be referenced\.
+   The CDK will now use the pre-created role name anywhere that the role is referenced in the CDK application. It will also continue to generate the report so that any future policy changes can be referenced.
 
-   You will notice that the reference to the Amazon S3 bucket ARN in the report is rendered as \(`LambdaStack/Bucket/Resource.Arn`\) instead of the actual ARN of the bucket\. This is because the bucket ARN is a deploy time value that is not known at synthesis \(the bucket hasn’t been created yet\)\. This is another example of why we recommend allowing CDK to manage IAM roles and permissions by using the provided `grant` methods\. In order to create the role with the initial policy, the admin will have to create the policy with broader permissions \(for example, `arn:aws:s3:::*`\)\.
+   You will notice that the reference to the Amazon S3 bucket ARN in the report is rendered as (`LambdaStack/Bucket/Resource.Arn`) instead of the actual ARN of the bucket. This is because the bucket ARN is a deploy time value that is not known at synthesis (the bucket hasn’t been created yet). This is another example of why we recommend allowing CDK to manage IAM roles and permissions by using the provided `grant` methods. In order to create the role with the initial policy, the admin will have to create the policy with broader permissions (for example, `arn:aws:s3:::*`).

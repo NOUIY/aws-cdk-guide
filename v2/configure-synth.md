@@ -1,18 +1,18 @@
 # Configure and perform CDK stack synthesis<a name="configure-synth"></a>
 
-Before you can deploy an AWS Cloud Development Kit \(AWS CDK\) stack, it must first be synthesized\. *Stack synthesis* is the process of producing an AWS CloudFormation template and deployment artifacts from a CDK stack\. The template and artifacts are known as the *cloud assembly*\. The cloud assembly is what gets deployed to provision your resources on AWS\. For more information on how deployments work, see [How AWS CDK deployments work](deploy.md#deploy-how)\.
+Before you can deploy an AWS Cloud Development Kit (AWS CDK) stack, it must first be synthesized. *Stack synthesis* is the process of producing an AWS CloudFormation template and deployment artifacts from a CDK stack. The template and artifacts are known as the *cloud assembly*. The cloud assembly is what gets deployed to provision your resources on AWS. For more information on how deployments work, see [How AWS CDK deployments work](deploy.md#deploy-how).
 
 ## How synthesis and bootstrapping work together<a name="configure-synth-bootstrap"></a>
 
-For your CDK apps to properly deploy, the CloudFormation templates produced during synthesis must correctly specify the resources created during bootstrapping\. Therefore, bootstrapping and synthesis must complement one another for a deployment to be successful:
-+ Bootstrapping is a one\-time process of setting up an AWS environment for AWS CDK deployments\. It configures specific AWS resources in your environment that are used by the CDK for deployments\. These are commonly referred to as *bootstrap resources*\. For instructions on bootstrapping, see [Bootstrap your environment for use with the AWS CDK](bootstrapping-env.md)\.
-+ CloudFormation templates produced during synthesis include information on which bootstrap resources to use\. During synthesis, the CDK CLI doesn't know specifically how your AWS environment has been bootstrapped\. Instead, the CDK CLI produces CloudFormation templates based on the synthesizer you configure for each CDK stack\. For a deployment to be successful, the synthesizer must produce CloudFormation templates that reference the correct bootstrap resources to use\.
+For your CDK apps to properly deploy, the CloudFormation templates produced during synthesis must correctly specify the resources created during bootstrapping. Therefore, bootstrapping and synthesis must complement one another for a deployment to be successful:
++ Bootstrapping is a one-time process of setting up an AWS environment for AWS CDK deployments. It configures specific AWS resources in your environment that are used by the CDK for deployments. These are commonly referred to as *bootstrap resources*. For instructions on bootstrapping, see [Bootstrap your environment for use with the AWS CDK](bootstrapping-env.md).
++ CloudFormation templates produced during synthesis include information on which bootstrap resources to use. During synthesis, the CDK CLI doesn't know specifically how your AWS environment has been bootstrapped. Instead, the CDK CLI produces CloudFormation templates based on the synthesizer you configure for each CDK stack. For a deployment to be successful, the synthesizer must produce CloudFormation templates that reference the correct bootstrap resources to use.
 
-The CDK comes with a default synthesizer and bootstrapping configuration that are designed to work together\. If you customize one, you must apply relevant customizations to the other\.
+The CDK comes with a default synthesizer and bootstrapping configuration that are designed to work together. If you customize one, you must apply relevant customizations to the other.
 
 ## How to configure CDK stack synthesis<a name="bootstrapping-synthesizers"></a>
 
-You configure CDK stack synthesis using the `synthesizer` property of your `[Stack](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stack.html)` instance\. This property specifies how your CDK stacks will be synthesized\. You provide an instance of a class that implements `[IStackSynthesizer](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.IStackSynthesizer.html)` or `[IReusableStackSynthesizer](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.IReusableStackSynthesizer.html)`\. Its methods will be invoked every time an asset is added to the stack or when the stack is synthesized\. The following is a basic example of using this property within your stack:
+You configure CDK stack synthesis using the `synthesizer` property of your `[Stack](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stack.html)` instance. This property specifies how your CDK stacks will be synthesized. You provide an instance of a class that implements `[IStackSynthesizer](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.IStackSynthesizer.html)` or `[IReusableStackSynthesizer](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.IReusableStackSynthesizer.html)`. Its methods will be invoked every time an asset is added to the stack or when the stack is synthesized. The following is a basic example of using this property within your stack:
 
 ------
 #### [ TypeScript ]
@@ -64,7 +64,7 @@ new MyStack(app, "MyStack", StackProps.builder()
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 new MyStack(app, "MyStack", new StackProps
@@ -170,7 +170,7 @@ public class Main {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 
 
@@ -225,15 +225,15 @@ func main() {
 
 ------
 
-By default, the AWS CDK uses `[DefaultStackSynthesizer](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.DefaultStackSynthesizer.html)`\. If you don’t configure a synthesizer, this synthesizer will be used\.
+By default, the AWS CDK uses `[DefaultStackSynthesizer](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.DefaultStackSynthesizer.html)`. If you don’t configure a synthesizer, this synthesizer will be used.
 
-If you don't modify bootstrapping, such as making changes to the bootstrap stack or template, you don’t have to modify stack synthesis\. You don’t even have to provide a synthesizer\. The CDK will use the default `DefaultStackSynthesizer` class to configure CDK stack synthesis to properly interact with your bootstrap stack\.
+If you don't modify bootstrapping, such as making changes to the bootstrap stack or template, you don’t have to modify stack synthesis. You don’t even have to provide a synthesizer. The CDK will use the default `DefaultStackSynthesizer` class to configure CDK stack synthesis to properly interact with your bootstrap stack.
 
 ## How to synthesize a CDK stack<a name="configure-synth-stack"></a>
 
-To synthesize a CDK stack, use the AWS CDK Command Line Interface \(AWS CDK CLI\) `cdk synth` command\. For more information about this command, including options that you can use with this command, see [cdk synthesize](ref-cli-cmd-synth.md)\.
+To synthesize a CDK stack, use the AWS CDK Command Line Interface (AWS CDK CLI) `cdk synth` command. For more information about this command, including options that you can use with this command, see [cdk synthesize](ref-cli-cmd-synth.md).
 
-If your CDK app contains a single stack, or to synthesize all stacks, you don't have to provide the CDK stack name as an argument\. By default, the CDK CLI will synthesize your CDK stacks into AWS CloudFormation templates\. A `json` formatted template for each stack is saved to the `cdk.out` directory\. If your app contains a single stack, a `yaml` formatted template is printed to `stdout`\. The following is an example:
+If your CDK app contains a single stack, or to synthesize all stacks, you don't have to provide the CDK stack name as an argument. By default, the CDK CLI will synthesize your CDK stacks into AWS CloudFormation templates. A `json` formatted template for each stack is saved to the `cdk.out` directory. If your app contains a single stack, a `yaml` formatted template is printed to `stdout`. The following is an example:
 
 ```
 $ cdk synth
@@ -248,26 +248,26 @@ Resources:
     ...
 ```
 
-If your CDK app contains multiple stacks, you can provide the logical ID of a stack to synthesize a single stack\. The following is an example:
+If your CDK app contains multiple stacks, you can provide the logical ID of a stack to synthesize a single stack. The following is an example:
 
 ```
 $ cdk synth MyStackName
 ```
 
-If you don’t synthesize a stack and run `cdk deploy`, the CDK CLI will automatically synthesize your stack before deployment\.
+If you don’t synthesize a stack and run `cdk deploy`, the CDK CLI will automatically synthesize your stack before deployment.
 
 ## How synthesis works by default<a name="how-synth-default"></a>
 
 ### Generated logical IDs in your AWS CloudFormation template<a name="how-synth-default-logical-ids"></a>
 
-When you synthesize a CDK stack to produce a CloudFormation template, logical IDs are generated from the following sources, formatted as *<construct\-path><construct\-ID><unique\-hash>*:
-+ **Construct path** – The entire path to the construct in your CDK app\. This path excludes the ID of the L1 construct, which is always `Resource` or `Default`, and the ID of the top\-level stack that it's a part of\.
-+ **Construct ID** – The ID that you provide as the second argument when instantiating your construct\.
-+ **Unique hash** – The AWS CDK generates an 8 character unique hash using a deterministic hashing algorithm\. This unique hash helps to ensure that logical ID values in your template are unique from one another\. The deterministic behavior of this hash generation ensures that the generated logical ID value for each construct remains the same every time that you perform synthesis\. The hash value will only change if you modify specific construct values such as your construct's ID or its path\.
+When you synthesize a CDK stack to produce a CloudFormation template, logical IDs are generated from the following sources, formatted as *<construct-path><construct-ID><unique-hash>*:
++ **Construct path** – The entire path to the construct in your CDK app. This path excludes the ID of the L1 construct, which is always `Resource` or `Default`, and the ID of the top-level stack that it's a part of.
++ **Construct ID** – The ID that you provide as the second argument when instantiating your construct.
++ **Unique hash** – The AWS CDK generates an 8 character unique hash using a deterministic hashing algorithm. This unique hash helps to ensure that logical ID values in your template are unique from one another. The deterministic behavior of this hash generation ensures that the generated logical ID value for each construct remains the same every time that you perform synthesis. The hash value will only change if you modify specific construct values such as your construct's ID or its path.
 
-Logical IDs have a maximum length of 255 characters\. Therefore, the AWS CDK will truncate the construct path and construct ID if necessary to keep within that limit\.
+Logical IDs have a maximum length of 255 characters. Therefore, the AWS CDK will truncate the construct path and construct ID if necessary to keep within that limit.
 
-The following is an example of a construct that defines an Amazon Simple Storage Service \(Amazon S3\) bucket\. Here, we pass `myBucket` as the ID for our construct:
+The following is an example of a construct that defines an Amazon Simple Storage Service (Amazon S3) bucket. Here, we pass `myBucket` as the ID for our construct:
 
 ------
 #### [ TypeScript ]
@@ -365,7 +365,7 @@ public class MyCdkAppStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -425,7 +425,7 @@ func NewMyCdkAppStack(scope constructs.Construct, id string, props *MyCdkAppStac
 
 ------
 
-When we run `cdk synth`, a logical ID in the format of `myBucketunique-hash` gets generated\. The following is an example of this resource in the generated AWS CloudFormation template:
+When we run `cdk synth`, a logical ID in the format of `myBucketunique-hash` gets generated. The following is an example of this resource in the generated AWS CloudFormation template:
 
 ```
 Resources:
@@ -440,7 +440,7 @@ Resources:
       aws:cdk:path: S3BucketAppStack/myBucket/Resource
 ```
 
-The following is an example of a custom construct named `Bar` that defines an Amazon S3 bucket\. The `Bar` construct includes the custom construct `Foo` in its path:
+The following is an example of a custom construct named `Bar` that defines an Amazon S3 bucket. The `Bar` construct includes the custom construct `Foo` in its path:
 
 ------
 #### [ TypeScript ]
@@ -642,7 +642,7 @@ public class MyCustomAppStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -761,7 +761,7 @@ func main() {
 
 ------
 
-When we run `cdk synth`, a logical ID in the format of `FooBarBucketunique-hash` gets generated\. The following is an example of this resource in the generated AWS CloudFormation template:
+When we run `cdk synth`, a logical ID in the format of `FooBarBucketunique-hash` gets generated. The following is an example of this resource in the generated AWS CloudFormation template:
 
 ```
 Resources:
@@ -777,4 +777,4 @@ Resources:
 
 ## Customize CDK stack synthesis<a name="bootstrapping-custom-synth"></a>
 
-If the default CDK synthesis behavior doesn't suit your needs, you can customize CDK synthesis\. To do this, you modify `DefaultStackSynthesizer`, use other available built\-in synthesizers, or create your own synthesizer\. For instructions, see [Customize CDK stack synthesisCustomize CDK synthesis](customize-synth.md)\.
+If the default CDK synthesis behavior doesn't suit your needs, you can customize CDK synthesis. To do this, you modify `DefaultStackSynthesizer`, use other available built-in synthesizers, or create your own synthesizer. For instructions, see [Customize CDK stack synthesisCustomize CDK synthesis](customize-synth.md).

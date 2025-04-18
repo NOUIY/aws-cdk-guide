@@ -1,12 +1,12 @@
 # OpenPGP keys for the AWS CDK and jsii<a name="pgp-keys"></a>
 
-This topic contains current and historical OpenPGP keys for the AWS CDK and jsii\.
+This topic contains current and historical OpenPGP keys for the AWS CDK and jsii.
 
 ## Current keys<a name="pgp-keys-current"></a>
 
-These keys should be used to validate current releases of the AWS CDK and jsii\.
+These keys should be used to validate current releases of the AWS CDK and jsii.
 
-### AWS CDK OpenPGP key<a name="cdk_pgp_key"></a>
+### AWS CDK OpenPGP key<a name="cdk-pgp-key"></a>
 
 
 |  |  | 
@@ -14,9 +14,9 @@ These keys should be used to validate current releases of the AWS CDK and jsii\.
 | Key ID: | 0x42B9CF2286CD987A | 
 | Type: | RSA | 
 | Size: | 4096/4096 | 
-| Created: | 2022\-07\-05 | 
-| Expires: | 2026\-07\-04 | 
-| User ID: | AWS Cloud Development Kit <aws\-cdk@amazon\.com> | 
+| Created: | 2022-07-05 | 
+| Expires: | 2026-07-04 | 
+| User ID: | AWS Cloud Development Kit <aws-cdk@amazon.com> | 
 | Key fingerprint: | 69B5 2D5B A295 1D11 FA65 413B 42B9 CF22 86CD 987A | 
 
 Select the "Copy" icon to copy the following OpenPGP key:
@@ -53,7 +53,7 @@ yq4=
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-### jsii OpenPGP key<a name="jsii_pgp_key"></a>
+### jsii OpenPGP key<a name="jsii-pgp-key"></a>
 
 
 |  |  | 
@@ -61,9 +61,9 @@ yq4=
 | Key ID: | 0x056C4E15DAE3D8D9 | 
 | Type: | RSA | 
 | Size: | 4096/4096 | 
-| Created: | 2022\-07\-05 | 
-| Expires: | 2026\-07\-04 | 
-| User ID: | AWS JSII Team <aws\-jsii@amazon\.com> | 
+| Created: | 2022-07-05 | 
+| Expires: | 2026-07-04 | 
+| User ID: | AWS JSII Team <aws-jsii@amazon.com> | 
 | Key fingerprint: | 1E07 31D4 57E5 FE87 87E5 530A 056C 4E15 DAE3 D8D9 | 
 
 Select the "Copy" icon to copy the following OpenPGP key:
@@ -101,15 +101,15 @@ QWnL/+shuRtMH2geTjkev198Jgb5HyXFm4SyYtZferQROyliEhik
 
 ## Historical keys<a name="pgp-keys-expired"></a>
 
-These keys may be used to validate releases of the AWS CDK and jsii before 2022\-07\-05\.
+These keys may be used to validate releases of the AWS CDK and jsii before 2022-07-05.
 
 **Important**  
-New keys are created before the previous ones expire\. As a result, at any given moment in time, more than one key may be valid\. Keys are used to sign artifacts starting the day they are created, so use the more recently\-issued key where keys' validity overlaps\.
+New keys are created before the previous ones expire. As a result, at any given moment in time, more than one key may be valid. Keys are used to sign artifacts starting the day they are created, so use the more recently-issued key where keys' validity overlaps.
 
-### AWS CDK OpenPGP key \(2022\-04\-07\)<a name="cdk_pgp_key-2022-04-07-"></a>
+### AWS CDK OpenPGP key (2022-04-07)<a name="cdk-pgp-key-2022-04-07-"></a>
 
 **Note**  
-This key was not used to sign AWS CDK artifacts after 2022\-07\-05\.
+This key was not used to sign AWS CDK artifacts after 2022-07-05.
 
 
 |  |  | 
@@ -117,9 +117,9 @@ This key was not used to sign AWS CDK artifacts after 2022\-07\-05\.
 | Key ID: | 0x015584281F44A3C3 | 
 | Type: | RSA | 
 | Size: | 4096/4096 | 
-| Created: | 2022\-04\-07 | 
-| Expires: | 2026\-04\-06 | 
-| User ID: | AWS Cloud Development Kit <aws\-cdk@amazon\.com> | 
+| Created: | 2022-04-07 | 
+| Expires: | 2026-04-06 | 
+| User ID: | AWS Cloud Development Kit <aws-cdk@amazon.com> | 
 | Key fingerprint: | EAE1 1A24 82B0 AA86 456E 6C67 0155 8428 1F44 A3C3 | 
 
 Select the "Copy" icon to copy the following OpenPGP key:
@@ -156,10 +156,10 @@ l6U=
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-### jsii OpenPGP key \(2022\-04\-07\)<a name="jsii_pgp_key-2022-04-07"></a>
+### jsii OpenPGP key (2022-04-07)<a name="jsii-pgp-key-2022-04-07"></a>
 
 **Note**  
-This key was not used to sign jsii artifacts after 2022\-07\-05\.
+This key was not used to sign jsii artifacts after 2022-07-05.
 
 
 |  |  | 
@@ -167,9 +167,9 @@ This key was not used to sign jsii artifacts after 2022\-07\-05\.
 | Key ID: | 0x985F5BC974B79356 | 
 | Type: | RSA | 
 | Size: | 4096/4096 | 
-| Created: | 2022\-04\-07 | 
-| Expires: | 2026\-04\-06 | 
-| User ID: | AWS JSII Team <aws\-jsii@amazon\.com> | 
+| Created: | 2022-04-07 | 
+| Expires: | 2026-04-06 | 
+| User ID: | AWS JSII Team <aws-jsii@amazon.com> | 
 | Key fingerprint: | 35A7 1785 8FA6 282D C5AC CD95 985F 5BC9 74B7 9356 | 
 
 Select the "Copy" icon to copy the following OpenPGP key:
@@ -205,7 +205,7 @@ I5zB5UztS6dy+cH+J7DoRaxzVzq7qtH/ZY2quClt30wwqDHUX1ef
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-### AWS CDK OpenPGP key \(2018\-06\-19\)<a name="cdk_pgp_key-2018-06-19-"></a>
+### AWS CDK OpenPGP key (2018-06-19)<a name="cdk-pgp-key-2018-06-19-"></a>
 
 
 |  |  | 
@@ -213,9 +213,9 @@ I5zB5UztS6dy+cH+J7DoRaxzVzq7qtH/ZY2quClt30wwqDHUX1ef
 | Key ID: | 0x0566A784E17F3870 | 
 | Type: | RSA | 
 | Size: | 4096/4096 | 
-| Created: | 2018\-06\-19 | 
-| Expires: | 2022\-06\-18 | 
-| User ID: | AWS CDK Team <aws\-cdk@amazon\.com> | 
+| Created: | 2018-06-19 | 
+| Expires: | 2022-06-18 | 
+| User ID: | AWS CDK Team <aws-cdk@amazon.com> | 
 | Key fingerprint: | E88B E3B6 F0B1 E350 9E36 4F96 0566 A784 E17F 3870 | 
 
 Select the "Copy" icon to copy the following OpenPGP key:
@@ -251,7 +251,7 @@ EkSlc/RoDqZCpBGgcoy1FFWvV/ZLgNU6OTQlYH6oYOWiylSJnaTDyurrktsxJI6d
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-### jsii OpenPGP key \(2018\-08\-06\)<a name="jsii_pgp_key-2018-08-06"></a>
+### jsii OpenPGP key (2018-08-06)<a name="jsii-pgp-key-2018-08-06"></a>
 
 
 |  |  | 
@@ -259,9 +259,9 @@ EkSlc/RoDqZCpBGgcoy1FFWvV/ZLgNU6OTQlYH6oYOWiylSJnaTDyurrktsxJI6d
 | Key ID: | 0x1C7ACE4CB2A1B93A | 
 | Type: | RSA | 
 | Size: | 4096/4096 | 
-| Created: | 2018\-08\-06 | 
-| Expires: | 2022\-08\-05 | 
-| User ID: | AWS JSII Team <aws\-jsii@amazon\.com> | 
+| Created: | 2018-08-06 | 
+| Expires: | 2022-08-05 | 
+| User ID: | AWS JSII Team <aws-jsii@amazon.com> | 
 | Key fingerprint: | 85EF 6522 4CE2 1E8C 72DB 28EC 1C7A CE4C B2A1 B93A | 
 
 Select the "Copy" icon to copy the following OpenPGP key:

@@ -2,10 +2,10 @@
 
 ## What is CDK usage data reporting?<a name="usage-data-intro"></a>
 
-AWS Cloud Development Kit \(AWS CDK\) applications are configured to collect and report on usage data to gain insight into how the AWS CDK is being used\. The CDK team uses this data to do the following:
-+ **Communicate with customers** – Identify stacks using a construct with known security or reliability issues and send out communication on customer\-impacting topics\.
-+ **Inform CDK development** – Gain insight on CDK usage to better inform CDK development\.
-+ **Investigate CDK issues** – When bugs are reported, usage data provides valuable insight to the CDK team when troubleshooting\.
+AWS Cloud Development Kit (AWS CDK) applications are configured to collect and report on usage data to gain insight into how the AWS CDK is being used. The CDK team uses this data to do the following:
++ **Communicate with customers** – Identify stacks using a construct with known security or reliability issues and send out communication on customer-impacting topics.
++ **Inform CDK development** – Gain insight on CDK usage to better inform CDK development.
++ **Investigate CDK issues** – When bugs are reported, usage data provides valuable insight to the CDK team when troubleshooting.
 
 ## What usage data is collected?<a name="usage-data-categories"></a>
 
@@ -16,7 +16,7 @@ There are two categories of usage data collected by the CDK:
 ### General usage data collection<a name="usage-data-categories-general"></a>
 
 The CDK collects the following types of general usage data from your CDK applications:
-+ Versions of CDK libraries used\.
++ Versions of CDK libraries used.
 + Names of constructs used from the following `NPM` modules:
   + AWS CDK core modules
   + AWS Construct Library modules
@@ -24,22 +24,22 @@ The CDK collects the following types of general usage data from your CDK applica
   + AWS Render Farm Deployment Kit module
 
 **Note**  
-Before version 1\.93\.0, the AWS CDK reported the names and versions of the modules loaded during synthesis, instead of the constructs used in the stack\.
+Before version 1.93.0, the AWS CDK reported the names and versions of the modules loaded during synthesis, instead of the constructs used in the stack.
 
 ### Additional usage data collection<a name="usage-data-categories-additional"></a>
 
-Starting with CDK version 2\.178\.0, usage data collection expanded to include the following additional usage data:
-+ **CDK–defined property keys** – When you use a built\-in property of an L2 construct, the property key will be collected\. This includes built\-in property keys nested in dictionary objects\.
-+ **Boolean and enum property values from CDK–defined property keys** – For CDK–defined property keys, property values of only Boolean and enum types will be collected\. All other types, such as string values or construct references will be redacted\.
-+ **Method name, keys, and property values of Boolean and enum types** – When you use an L2 construct method, we will collect the method name, property keys, and property values of Boolean and enum types\.
+Starting with CDK version 2.178.0, usage data collection expanded to include the following additional usage data:
++ **CDK–defined property keys** – When you use a built-in property of an L2 construct, the property key will be collected. This includes built-in property keys nested in dictionary objects.
++ **Boolean and enum property values from CDK–defined property keys** – For CDK–defined property keys, property values of only Boolean and enum types will be collected. All other types, such as string values or construct references will be redacted.
++ **Method name, keys, and property values of Boolean and enum types** – When you use an L2 construct method, we will collect the method name, property keys, and property values of Boolean and enum types.
 
-For property keys and values that you uniquely create, the entire object will be redacted\. For example, if you use `[InlineApiDefinition](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.InlineApiDefinition.html)` to define an OpenAPI specification and pass it into a `[RestApi](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.RestApi.html)` construct, the entire `InlineApiDefinition` object will be redacted\.
+For property keys and values that you uniquely create, the entire object will be redacted. For example, if you use `[InlineApiDefinition](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.InlineApiDefinition.html)` to define an OpenAPI specification and pass it into a `[RestApi](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.RestApi.html)` construct, the entire `InlineApiDefinition` object will be redacted.
 
-For more information on additional usage data collection, including its benefits and potential concerns, see the [CDK Collecting Additional Metadata \(under feature flag\) \#33198](https://github.com/aws/aws-cdk/discussions/33198) discussion in the *aws\-cdk repository*\.
+For more information on additional usage data collection, including its benefits and potential concerns, see the [CDK Collecting Additional Metadata (under feature flag) \$133198](https://github.com/aws/aws-cdk/discussions/33198) discussion in the *aws-cdk repository*.
 
 ## How the CDK collects usage data<a name="usage-data-how"></a>
 
-At synthesis, the CDK collects usage data from your application and stores it within the `AWS::CDK::Metadata` resource\. The following is an example of this on a synthesized AWS CloudFormation template:
+At synthesis, the CDK collects usage data from your application and stores it within the `AWS::CDK::Metadata` resource. The following is an example of this on a synthesized AWS CloudFormation template:
 
 ```
 CDKMetadata:
@@ -48,36 +48,36 @@ CDKMetadata:
     Analytics: "v2:deflate64:H4sIAND9SGAAAzXKSw5AMBAA0L1b2PdzBYnEAdio3RglglY60zQi7u6TWL/XKmNUlxeQSOKwaPTBqrNhwEWU3hGHiCzK0dWWfAxoL/Fd8mvk+QkS/0X6BdjnCdgmOOQKWz+AqqLDt2Y3YMnLYWwAAAA="
 ```
 
-The `Analytics` property is a gzipped, base64\-encoded, prefix\-encoded list of the constructs in the stack\.
+The `Analytics` property is a gzipped, base64-encoded, prefix-encoded list of the constructs in the stack.
 
 ## How to opt out or opt in to usage data reporting<a name="usage-data-configure"></a>
 
-Your options to opt out or opt in to general usage data reporting and additional usage data reporting depends on the CDK version you used to originally create your app\.
+Your options to opt out or opt in to general usage data reporting and additional usage data reporting depends on the CDK version you used to originally create your app.
 
 By default, CDK applications are configured to automatically opt in to usage data reporting as follows:
-+ **All CDK apps** – Opted in to general usage data reporting\.
-+ **CDK apps created with a version older than v2\.178\.0** – Not automatically opted in to additional usage data reporting\.
-+ **CDK apps created with v2\.178\.0 or newer** – Opted in to additional usage data reporting\.
++ **All CDK apps** – Opted in to general usage data reporting.
++ **CDK apps created with a version older than v2.178.0** – Not automatically opted in to additional usage data reporting.
++ **CDK apps created with v2.178.0 or newer** – Opted in to additional usage data reporting.
 
 **Warning**  
-If you choose to opt out, the CDK will not be able to identify if you’ve been impacted by security issues and will not send you notifications for them\.
+If you choose to opt out, the CDK will not be able to identify if you’ve been impacted by security issues and will not send you notifications for them.
 
 ### Opt out of all usage data reporting<a name="usage-data-configure-optout-all"></a>
 
-To opt out of all usage data reporting, you can use the AWS Cloud Development Kit \(AWS CDK\) Command Line Interface \(CLI\) or configure your project’s `cdk.json` file\.
+To opt out of all usage data reporting, you can use the AWS Cloud Development Kit (AWS CDK) Command Line Interface (CLI) or configure your project’s `cdk.json` file.
 
 **To opt out of all usage data reporting using the CDK CLI**
-+ Use the `--no-version-reporting` option with any CDK CLI command to opt out for a single command\. The following is an example of opting out during template synthesis:
++ Use the `--no-version-reporting` option with any CDK CLI command to opt out for a single command. The following is an example of opting out during template synthesis:
 
   ```
   $ cdk synth --no-version-reporting
   ```
 
-  Since the CDK synthesizes templates automatically when you run `cdk deploy`, you should also use `--no-version-reporting` with the `cdk deploy` command\.
+  Since the CDK synthesizes templates automatically when you run `cdk deploy`, you should also use `--no-version-reporting` with the `cdk deploy` command.
 
 **To opt out of all usage data reporting by configuring the `cdk.json` file**
 
-1. Set `versionReporting` to `false` in `./cdk.json` or `~/.cdk.json`\. This opts you out by default\. The following is an example:
+1. Set `versionReporting` to `false` in `./cdk.json` or `~/.cdk.json`. This opts you out by default. The following is an example:
 
    ```
    {
@@ -86,27 +86,27 @@ To opt out of all usage data reporting, you can use the AWS Cloud Development Ki
    }
    ```
 
-1. After configuring, you can override this behavior and opt in by specifying `--version-reporting` on an individual command\.
+1. After configuring, you can override this behavior and opt in by specifying `--version-reporting` on an individual command.
 
 ### Opt out of only the additional usage data reporting<a name="usage-data-configure-optout-additional"></a>
 
-If your CDK app was created with a CDK version older than 2\.178\.0, you are automatically opted out of additional usage data reporting, even if you are opted in to general usage data reporting\. You don’t have to do anything to opt out of additional usage data reporting\.
+If your CDK app was created with a CDK version older than 2.178.0, you are automatically opted out of additional usage data reporting, even if you are opted in to general usage data reporting. You don’t have to do anything to opt out of additional usage data reporting.
 
-If your CDK app was created with CDK version 2\.178\.0 or newer, you must opt out of all usage data reporting\. You can’t opt out of only the additional usage data reporting\.
+If your CDK app was created with CDK version 2.178.0 or newer, you must opt out of all usage data reporting. You can’t opt out of only the additional usage data reporting.
 
 ### Opt in to usage data reporting<a name="usage-data-configure-optin"></a>
 
-If your CDK app was created with CDK version 2\.178\.0 or newer, you can opt in to all usage data reporting by setting `versionReporting` to `true`\. This is the default behavior of CDK apps\.
+If your CDK app was created with CDK version 2.178.0 or newer, you can opt in to all usage data reporting by setting `versionReporting` to `true`. This is the default behavior of CDK apps.
 
-If your CDK app was created with a CDK version older than 2\.178\.0, you can opt in to general usage data reporting by setting `versionReporting` to `true`\. To opt in to additional usage data reporting, you must enable a feature flag\.
+If your CDK app was created with a CDK version older than 2.178.0, you can opt in to general usage data reporting by setting `versionReporting` to `true`. To opt in to additional usage data reporting, you must enable a feature flag.
 
 **To opt in to additional usage data reporting**
 **Note**  
-These steps are for CDK apps originally created with a version older than 2\.178\.0
+These steps are for CDK apps originally created with a version older than 2.178.0
 
-1. Verify that you are now using CDK version 2\.178\.0 or newer\.
+1. Verify that you are now using CDK version 2.178.0 or newer.
 
-1. In your CDK configuration file, specify `@aws-cdk/core:enableAdditionalMetadataCollection` as `true`\. The following is an example:
+1. In your CDK configuration file, specify `@aws-cdk/core:enableAdditionalMetadataCollection` as `true`. The following is an example:
 
    ```
    {
@@ -116,7 +116,7 @@ These steps are for CDK apps originally created with a version older than 2\.178
    }
    ```
 
-1. You can also use the `ENABLE_ADDITIONAL_METADATA_COLLECTION` value with the `[FeatureFlags](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.FeatureFlags.html)` class\. The following is an example:
+1. You can also use the `ENABLE_ADDITIONAL_METADATA_COLLECTION` value with the `[FeatureFlags](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.FeatureFlags.html)` class. The following is an example:
 
    ```
    import * as cdk from 'aws-cdk-lib';
@@ -182,9 +182,9 @@ new MyStack(app, 'MyStack');
 app.synth();
 ```
 
-At synthesis, usage data is collected, compressed, and stored in the `AWS::CDK::Metadata` resource\.
+At synthesis, usage data is collected, compressed, and stored in the `AWS::CDK::Metadata` resource.
 
-The following is an example of general usage data collected with a CDK version older than 2\.178\.0:
+The following is an example of general usage data collected with a CDK version older than 2.178.0:
 
 ```
 { 
@@ -193,7 +193,7 @@ The following is an example of general usage data collected with a CDK version o
 }
 ```
 
-The following is an example of usage data collected, including the additional usage data introduced in CDK version 2\.178\.0:
+The following is an example of usage data collected, including the additional usage data introduced in CDK version 2.178.0:
 
 ```
 { 

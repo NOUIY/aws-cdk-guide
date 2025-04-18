@@ -1,10 +1,10 @@
 # Tokens and the AWS CDK<a name="tokens"></a>
 
-In the AWS Cloud Development Kit \(AWS CDK\), *tokens* are placeholders for values that aren’t known when defining constructs or synthesizing stacks\. These values will be fully resolved at deployment, when your actual infrastructure is created\. When developing AWS CDK applications, you will work with tokens to manage these values across your application\.
+In the AWS Cloud Development Kit (AWS CDK), *tokens* are placeholders for values that aren’t known when defining constructs or synthesizing stacks. These values will be fully resolved at deployment, when your actual infrastructure is created. When developing AWS CDK applications, you will work with tokens to manage these values across your application.
 
 ## Token example<a name="tokens-example"></a>
 
-The following is an example of a CDK stack that defines a construct for an Amazon Simple Storage Service \(Amazon S3\) bucket\. Since the name of our bucket is not yet known, the value for `bucketName` is stored as a token:
+The following is an example of a CDK stack that defines a construct for an Amazon Simple Storage Service (Amazon S3) bucket. Since the name of our bucket is not yet known, the value for `bucketName` is stored as a token:
 
 ------
 #### [ TypeScript ]
@@ -115,7 +115,7 @@ public class CdkDemoAppStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -184,14 +184,14 @@ func NewCdkDemoAppStack(scope constructs.Construct, id string, props *CdkDemoApp
 
 ------
 
-When we run `cdk synth` to synthesize our stack, the value for `myBucketName` will be displayed in the token format of `${Token[TOKEN.1234]}`\. This token format is a result of how the AWS CDK encodes tokens\. In this example, the token is encoded as a string:
+When we run `cdk synth` to synthesize our stack, the value for `myBucketName` will be displayed in the token format of `${Token[TOKEN.1234]}`. This token format is a result of how the AWS CDK encodes tokens. In this example, the token is encoded as a string:
 
 ```
 $ cdk synth --quiet
 myBucketName: ${Token[TOKEN.21]}
 ```
 
-Since the value for our bucket name is not known at synthesis, the token is rendered as `myBucket<unique-hash>`\. Our AWS CloudFormation template uses the `Ref` intrinsic function to reference its value, which will be known at deployment:
+Since the value for our bucket name is not known at synthesis, the token is rendered as `myBucket<unique-hash>`. Our AWS CloudFormation template uses the `Ref` intrinsic function to reference its value, which will be known at deployment:
 
 ```
 Resources:
@@ -204,11 +204,11 @@ Outputs:
       Ref: myBucket5AF9C99B
 ```
 
-For more information on how the unique hash is generated, see [Generated logical IDs in your AWS CloudFormation template](configure-synth.md#how-synth-default-logical-ids)\.
+For more information on how the unique hash is generated, see [Generated logical IDs in your AWS CloudFormation template](configure-synth.md#how-synth-default-logical-ids).
 
 ## Passing tokens<a name="tokens-passing"></a>
 
-Tokens can be passed around as if they were the actual value they represent\. The following is an example that passes the token for our bucket name to a construct for an AWS Lambda function:
+Tokens can be passed around as if they were the actual value they represent. The following is an example that passes the token for our bucket name to a construct for an AWS Lambda function:
 
 ------
 #### [ TypeScript ]
@@ -381,7 +381,7 @@ public class CdkDemoAppStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -509,26 +509,26 @@ Resources:
 
 ## How token encodings work<a name="tokens-work"></a>
 
-Tokens are objects that implement the `[IResolvable](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.IResolvable.html)` interface, which contains a single `resolve` method\. During synthesis, the AWS CDK calls this method to produce the final value for tokens in your CloudFormation template\.
+Tokens are objects that implement the `[IResolvable](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.IResolvable.html)` interface, which contains a single `resolve` method. During synthesis, the AWS CDK calls this method to produce the final value for tokens in your CloudFormation template.
 
 **Note**  
-You'll rarely work directly with the `IResolvable` interface\. You will most likely only see string\-encoded versions of tokens\.
+You'll rarely work directly with the `IResolvable` interface. You will most likely only see string-encoded versions of tokens.
 
 ### Token encoding types<a name="tokens-work-types"></a>
 
-Tokens participate in the synthesis process to produce arbitrary values of any type\. Other functions typically only accept arguments of basic types, such as `string` or `number`\. To use tokens in these cases, you can encode them into one of three types by using static methods on the `[cdk\.Token](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html)` class\.
-+ [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrstringvalue-options](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrstringvalue-options) to generate a string encoding \(or call `.toString()` on the token object\)\.
-+ [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrlistvalue-options](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrlistvalue-options) to generate a list encoding\.
-+ [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrnumbervalue](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrnumbervalue) to generate a numeric encoding\.
+Tokens participate in the synthesis process to produce arbitrary values of any type. Other functions typically only accept arguments of basic types, such as `string` or `number`. To use tokens in these cases, you can encode them into one of three types by using static methods on the `[cdk.Token](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html)` class.
++ [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrstringvalue-options](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrstringvalue-options) to generate a string encoding (or call `.toString()` on the token object).
++ [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrlistvalue-options](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrlistvalue-options) to generate a list encoding.
++ [https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrnumbervalue](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-aswbrnumbervalue) to generate a numeric encoding.
 
-These take an arbitrary value, which can be an `IResolvable`, and encode them into a primitive value of the indicated type\.
+These take an arbitrary value, which can be an `IResolvable`, and encode them into a primitive value of the indicated type.
 
 **Important**  
-Because any one of the previous types can potentially be an encoded token, be careful when you parse or try to read their contents\. For example, if you attempt to parse a string to extract a value from it, and the string is an encoded token, your parsing fails\. Similarly, if you try to query the length of an array or perform math operations with a number, you must first verify that they aren't encoded tokens\.
+Because any one of the previous types can potentially be an encoded token, be careful when you parse or try to read their contents. For example, if you attempt to parse a string to extract a value from it, and the string is an encoded token, your parsing fails. Similarly, if you try to query the length of an array or perform math operations with a number, you must first verify that they aren't encoded tokens.
 
 ## How to check for tokens in your app<a name="tokens-check"></a>
 
-To check whether a value has an unresolved token in it, call the `[Token\.isUnresolved](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-iswbrunresolvedobj)` \(Python: `is_unresolved`\) method\. The following is an example that checks if the value for our Amazon S3 bucket name is a token\. If its not a token, we then validate the length of the bucket name:
+To check whether a value has an unresolved token in it, call the `[Token.isUnresolved](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Token.html#static-iswbrunresolvedobj)` (Python: `is_unresolved`) method. The following is an example that checks if the value for our Amazon S3 bucket name is a token. If its not a token, we then validate the length of the bucket name:
 
 ------
 #### [ TypeScript ]
@@ -648,7 +648,7 @@ public class CdkDemoAppStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -720,17 +720,17 @@ Token identified.
 ```
 
 **Note**  
-You can use token encodings to escape the type system\. For example, you could string\-encode a token that produces a number value at synthesis time\. If you use these functions, it's your responsibility to make sure that your template resolves to a usable state after synthesis\.
+You can use token encodings to escape the type system. For example, you could string-encode a token that produces a number value at synthesis time. If you use these functions, it's your responsibility to make sure that your template resolves to a usable state after synthesis.
 
-## Working with string\-encoded tokens<a name="tokens_string"></a>
+## Working with string-encoded tokens<a name="tokens-string"></a>
 
-String\-encoded tokens look like the following\.
+String-encoded tokens look like the following.
 
 ```
 ${TOKEN[Bucket.Name.1234]}
 ```
 
-They can be passed around like regular strings, and can be concatenated, as shown in the following example\.
+They can be passed around like regular strings, and can be concatenated, as shown in the following example.
 
 ------
 #### [ TypeScript ]
@@ -761,7 +761,7 @@ String functionName = bucket.getBucketName().concat("Function");
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 string functionName = bucket.BucketName + "Function";
@@ -776,7 +776,7 @@ functionName := *bucket.BucketName() + "Function"
 
 ------
 
-You can also use string interpolation, if your language supports it, as shown in the following example\.
+You can also use string interpolation, if your language supports it, as shown in the following example.
 
 ------
 #### [ TypeScript ]
@@ -807,7 +807,7 @@ String functionName = String.format("%sFunction". bucket.getBucketName());
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 string functionName = $"${bucket.bucketName}Function";
@@ -824,27 +824,27 @@ functionName := fmt.Sprintf("%sFunction", *bucket.BucketName())
 
 ------
 
-Avoid manipulating the string in other ways\. For example, taking a substring of a string is likely to break the string token\.
+Avoid manipulating the string in other ways. For example, taking a substring of a string is likely to break the string token.
 
-## Working with list\-encoded tokens<a name="tokens_list"></a>
+## Working with list-encoded tokens<a name="tokens-list"></a>
 
-List\-encoded tokens look like the following:
+List-encoded tokens look like the following:
 
 ```
 ["#{TOKEN[Stack.NotificationArns.1234]}"]
 ```
 
-The only safe thing to do with these lists is pass them directly to other constructs\. Tokens in string list form cannot be concatenated, nor can an element be taken from the token\. The only safe way to manipulate them is by using AWS CloudFormation intrinsic functions like [Fn\.select](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-select.html)\.
+The only safe thing to do with these lists is pass them directly to other constructs. Tokens in string list form cannot be concatenated, nor can an element be taken from the token. The only safe way to manipulate them is by using AWS CloudFormation intrinsic functions like [Fn.select](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-select.html).
 
-## Working with number\-encoded tokens<a name="tokens_number"></a>
+## Working with number-encoded tokens<a name="tokens-number"></a>
 
-Number\-encoded tokens are a set of tiny negative floating\-point numbers that look like the following\.
+Number-encoded tokens are a set of tiny negative floating-point numbers that look like the following.
 
 ```
 -1.8881545897087626e+289
 ```
 
-As with list tokens, you cannot modify the number value, as doing so is likely to break the number token\.
+As with list tokens, you cannot modify the number value, as doing so is likely to break the number token.
 
 The following is an example of a construct that contains a token encoded as a number:
 
@@ -1002,7 +1002,7 @@ public class CdkDemoAppStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -1098,18 +1098,18 @@ func NewCdkDemoAppStack(scope constructs.Construct, id string, props *CdkDemoApp
 
 ------
 
-When we run `cdk synth`, the value for `portToken` is displayed as a number\-encoded token:
+When we run `cdk synth`, the value for `portToken` is displayed as a number-encoded token:
 
 ```
 $ cdk synth --quiet
 portToken: -1.8881545897087968e+289
 ```
 
-### Pass number\-encoded tokens<a name="tokens-number-pass"></a>
+### Pass number-encoded tokens<a name="tokens-number-pass"></a>
 
-When you pass number\-encoded tokens to other constructs, it may make sense to convert them to strings first\. For example, if you want to use the value of a number\-encoded string as part of a concatenated string, converting it helps with readability\.
+When you pass number-encoded tokens to other constructs, it may make sense to convert them to strings first. For example, if you want to use the value of a number-encoded string as part of a concatenated string, converting it helps with readability.
 
-In the following example, `portToken` is a number\-encoded token that we want to pass to our Lambda function as part of `connectionString`:
+In the following example, `portToken` is a number-encoded token that we want to pass to our Lambda function as part of `connectionString`:
 
 ------
 #### [ TypeScript ]
@@ -1342,7 +1342,7 @@ public class CdkDemoAppStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 // ...
@@ -1467,14 +1467,14 @@ func NewCdkDemoAppStack(scope constructs.Construct, id string, props *CdkDemoApp
 
 ------
 
-If we pass this value to `connectionString`, the output value when we run `cdk synth` may be confusing due to the number\-encoded string:
+If we pass this value to `connectionString`, the output value when we run `cdk synth` may be confusing due to the number-encoded string:
 
 ```
 $ cdk synth --quiet
 connectionString: jdbc:mysql://mydb.cluster.amazonaws.com:-1.888154589708796e+289/mydatabase
 ```
 
-To convert a number\-encoded token to a string, use `[cdk\.Tokenization\.stringifyNumber\(*token*\)](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Tokenization.html#static-stringifywbrnumberx)`\. In the following example, we convert the number\-encoded token to a string before defining our connection string:
+To convert a number-encoded token to a string, use `[cdk.Tokenization.stringifyNumber(*token*)](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Tokenization.html#static-stringifywbrnumberx)`. In the following example, we convert the number-encoded token to a string before defining our connection string:
 
 ------
 #### [ TypeScript ]
@@ -1673,7 +1673,7 @@ public class CdkDemoAppStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 // ...
@@ -1787,13 +1787,13 @@ $ cdk synth --quiet
 connectionString: jdbc:mysql://mydb.cluster.amazonaws.com:${Token[TOKEN.242]}/mydatabase
 ```
 
-## Lazy values<a name="tokens_lazy"></a>
+## Lazy values<a name="tokens-lazy"></a>
 
-In addition to representing deploy\-time values, such as AWS CloudFormation [parameters](parameters.md), tokens are also commonly used to represent synthesis\-time lazy values\. These are values for which the final value will be determined before synthesis has completed, but not at the point where the value is constructed\. Use tokens to pass a literal string or number value to another construct, while the actual value at synthesis time might depend on some calculation that has yet to occur\.
+In addition to representing deploy-time values, such as AWS CloudFormation [parameters](parameters.md), tokens are also commonly used to represent synthesis-time lazy values. These are values for which the final value will be determined before synthesis has completed, but not at the point where the value is constructed. Use tokens to pass a literal string or number value to another construct, while the actual value at synthesis time might depend on some calculation that has yet to occur.
 
-You can construct tokens representing synth\-time lazy values using static methods on the `Lazy` class, such as `[Lazy\.string](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Lazy.html#static-stringproducer-options)` and `[Lazy\.number](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Lazy.html#static-numberproducer)`\. These methods accept an object whose `produce` property is a function that accepts a context argument and returns the final value when called\.
+You can construct tokens representing synth-time lazy values using static methods on the `Lazy` class, such as `[Lazy.string](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Lazy.html#static-stringproducer-options)` and `[Lazy.number](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Lazy.html#static-numberproducer)`. These methods accept an object whose `produce` property is a function that accepts a context argument and returns the final value when called.
 
-The following example creates an Auto Scaling group whose capacity is determined after its creation\.
+The following example creates an Auto Scaling group whose capacity is determined after its creation.
 
 ------
 #### [ TypeScript ]
@@ -1871,7 +1871,7 @@ actualValue = 10;
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 public class NumberProducer : INumberProducer
@@ -1902,9 +1902,9 @@ actualValue = 10;
 
 ------
 
-## Converting to JSON<a name="tokens_json"></a>
+## Converting to JSON<a name="tokens-json"></a>
 
-Sometimes you want to produce a JSON string of arbitrary data, and you may not know whether the data contains tokens\. To properly JSON\-encode any data structure, regardless of whether it contains tokens, use the method `[stack\.toJsonString](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stack.html#towbrjsonwbrstringobj-space)`, as shown in the following example\.
+Sometimes you want to produce a JSON string of arbitrary data, and you may not know whether the data contains tokens. To properly JSON-encode any data structure, regardless of whether it contains tokens, use the method `[stack.toJsonString](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stack.html#towbrjsonwbrstringobj-space)`, as shown in the following example.
 
 ------
 #### [ TypeScript ]
@@ -1944,7 +1944,7 @@ String stringVal = stack.toJsonString(java.util.Map.of(    // Map.of requires Ja
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 var stack = Stack.Of(this);

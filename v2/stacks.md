@@ -1,8 +1,8 @@
 # Introduction to AWS CDK stacks<a name="stacks"></a>
 
-An AWS CDK stack is the smallest single unit of deployment\. It represents a collection of AWS resources that you define using CDK constructs\. When you deploy CDK apps, the resources within a CDK stack are deployed together as an AWS CloudFormation stack\. To learn more about AWS CloudFormation stacks, see [Managing AWS resources as a single unit with AWS CloudFormation stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) in the *AWS CloudFormation User Guide*\.
+An AWS CDK stack is the smallest single unit of deployment. It represents a collection of AWS resources that you define using CDK constructs. When you deploy CDK apps, the resources within a CDK stack are deployed together as an AWS CloudFormation stack. To learn more about AWS CloudFormation stacks, see [Managing AWS resources as a single unit with AWS CloudFormation stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html) in the *AWS CloudFormation User Guide*.
 
-You define a stack by extending or inheriting from the `[Stack](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stack.html)` construct\. The following example is a common pattern for defining a CDK stack on a separate file, known as a *stack file*\. Here, we extend or inherit the `Stack` class and define a constructor that accepts `scope`, `id`, and `props`\. Then, we invoke the base `Stack` class constructor using `super` with the received `scope`, `id`, and `props`:
+You define a stack by extending or inheriting from the `[Stack](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stack.html)` construct. The following example is a common pattern for defining a CDK stack on a separate file, known as a *stack file*. Here, we extend or inherit the `Stack` class and define a constructor that accepts `scope`, `id`, and `props`. Then, we invoke the base `Stack` class constructor using `super` with the received `scope`, `id`, and `props`:
 
 ------
 #### [ TypeScript ]
@@ -80,7 +80,7 @@ public class MyCdkStack extends Stack {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK; 
@@ -145,9 +145,9 @@ func main() {
 
 ------
 
-The previous example has only defined a stack\. To create the stack, it must be instantiated within the context of your CDK app\. A common pattern is to define your CDK app and initialize your stack on a separate file, known as an *application file*\.
+The previous example has only defined a stack. To create the stack, it must be instantiated within the context of your CDK app. A common pattern is to define your CDK app and initialize your stack on a separate file, known as an *application file*.
 
-The following is an example that creates a CDK stack named `MyCdkStack`\. Here, the CDK app is created and `MyCdkStack` is instantiated in the context of the app:
+The following is an example that creates a CDK stack named `MyCdkStack`. Here, the CDK app is created and `MyCdkStack` is instantiated in the context of the app:
 
 ------
 #### [ TypeScript ]
@@ -222,7 +222,7 @@ public class MyCdkApp {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -329,7 +329,7 @@ app.synth();
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 var app = new App();
@@ -409,44 +409,44 @@ func main() {
 
 ------
 
-## About the stack API<a name="stack_api"></a>
+## About the stack API<a name="stack-api"></a>
 
 The `[Stack](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stack.html)` object provides a rich API, including the following:
-+ `Stack.of(construct)` – A static method that returns the **Stack** in which a construct is defined\. This is useful if you need to interact with a stack from within a reusable construct\. The call fails if a stack cannot be found in scope\.
-+ `stack.stackName` \(Python: `stack_name`\) – Returns the physical name of the stack\. As mentioned previously, all AWS CDK stacks have a physical name that the AWS CDK can resolve during synthesis\.
-+ `stack.region` and `stack.account` – Return the AWS Region and account, respectively, into which this stack will be deployed\. These properties return one of the following:
++ `Stack.of(construct)` – A static method that returns the **Stack** in which a construct is defined. This is useful if you need to interact with a stack from within a reusable construct. The call fails if a stack cannot be found in scope.
++ `stack.stackName` (Python: `stack_name`) – Returns the physical name of the stack. As mentioned previously, all AWS CDK stacks have a physical name that the AWS CDK can resolve during synthesis.
++ `stack.region` and `stack.account` – Return the AWS Region and account, respectively, into which this stack will be deployed. These properties return one of the following:
   + The account or Region explicitly specified when the stack was defined
-  + A string\-encoded token that resolves to the AWS CloudFormation pseudo parameters for account and Region to indicate that this stack is environment agnostic
+  + A string-encoded token that resolves to the AWS CloudFormation pseudo parameters for account and Region to indicate that this stack is environment agnostic
 
-  For information about how environments are determined for stacks, see [Environments for the AWS CDK](environments.md)\.
-+ `stack.addDependency(stack)` \(Python: `stack.add_dependency(stack)` – Can be used to explicitly define dependency order between two stacks\. This order is respected by the cdk deploy command when deploying multiple stacks at once\.
-+ `stack.tags` – Returns a [TagManager](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.TagManager.html) that you can use to add or remove stack\-level tags\. This tag manager tags all resources within the stack, and also tags the stack itself when it's created through AWS CloudFormation\.
-+ `stack.partition`, `stack.urlSuffix` \(Python: `url_suffix`\), `stack.stackId` \(Python: `stack_id`\), and `stack.notificationArn` \(Python: `notification_arn`\) – Return tokens that resolve to the respective AWS CloudFormation pseudo parameters, such as `{ "Ref": "AWS::Partition" }`\. These tokens are associated with the specific stack object so that the AWS CDK framework can identify cross\-stack references\.
-+ `stack.availabilityZones` \(Python: `availability_zones`\) – Returns the set of Availability Zones available in the environment in which this stack is deployed\. For environment\-agnostic stacks, this always returns an array with two Availability Zones\. For environment\-specific stacks, the AWS CDK queries the environment and returns the exact set of Availability Zones available in the Region that you specified\.
-+ `stack.parseArn(arn)` and `stack.formatArn(comps)` \(Python: `parse_arn`, `format_arn`\) – Can be used to work with Amazon Resource Names \(ARNs\)\.
-+ `stack.toJsonString(obj)` \(Python: `to_json_string`\) – Can be used to format an arbitrary object as a JSON string that can be embedded in an AWS CloudFormation template\. The object can include tokens, attributes, and references, which are only resolved during deployment\.
-+ `stack.templateOptions` \(Python: `template_options`\) – Use to specify AWS CloudFormation template options, such as Transform, Description, and Metadata, for your stack\.
+  For information about how environments are determined for stacks, see [Environments for the AWS CDK](environments.md).
++ `stack.addDependency(stack)` (Python: `stack.add_dependency(stack)` – Can be used to explicitly define dependency order between two stacks. This order is respected by the cdk deploy command when deploying multiple stacks at once.
++ `stack.tags` – Returns a [TagManager](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.TagManager.html) that you can use to add or remove stack-level tags. This tag manager tags all resources within the stack, and also tags the stack itself when it's created through AWS CloudFormation.
++ `stack.partition`, `stack.urlSuffix` (Python: `url_suffix`), `stack.stackId` (Python: `stack_id`), and `stack.notificationArn` (Python: `notification_arn`) – Return tokens that resolve to the respective AWS CloudFormation pseudo parameters, such as `{ "Ref": "AWS::Partition" }`. These tokens are associated with the specific stack object so that the AWS CDK framework can identify cross-stack references.
++ `stack.availabilityZones` (Python: `availability_zones`) – Returns the set of Availability Zones available in the environment in which this stack is deployed. For environment-agnostic stacks, this always returns an array with two Availability Zones. For environment-specific stacks, the AWS CDK queries the environment and returns the exact set of Availability Zones available in the Region that you specified.
++ `stack.parseArn(arn)` and `stack.formatArn(comps)` (Python: `parse_arn`, `format_arn`) – Can be used to work with Amazon Resource Names (ARNs).
++ `stack.toJsonString(obj)` (Python: `to_json_string`) – Can be used to format an arbitrary object as a JSON string that can be embedded in an AWS CloudFormation template. The object can include tokens, attributes, and references, which are only resolved during deployment.
++ `stack.templateOptions` (Python: `template_options`) – Use to specify AWS CloudFormation template options, such as Transform, Description, and Metadata, for your stack.
 
 ## Working with stacks<a name="stacks-work"></a>
 
-Stacks are deployed as an AWS CloudFormation stack into an AWS *[environment](environments.md)*\. The environment covers a specific AWS account and AWS Region\.
+Stacks are deployed as an AWS CloudFormation stack into an AWS *[environment](environments.md)*. The environment covers a specific AWS account and AWS Region.
 
-When you run the `cdk synth` command for an app with multiple stacks, the cloud assembly includes a separate template for each stack instance\. Even if the two stacks are instances of the same class, the AWS CDK emits them as two individual templates\.
+When you run the `cdk synth` command for an app with multiple stacks, the cloud assembly includes a separate template for each stack instance. Even if the two stacks are instances of the same class, the AWS CDK emits them as two individual templates.
 
-You can synthesize each template by specifying the stack name in the `cdk synth` command\. The following example synthesizes the template for `stack1`:
+You can synthesize each template by specifying the stack name in the `cdk synth` command. The following example synthesizes the template for `stack1`:
 
 ```
 $ cdk synth stack1
 ```
 
-This approach is conceptually different from how AWS CloudFormation templates are normally used, where a template can be deployed multiple times and parameterized through [AWS CloudFormation parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html)\. Although AWS CloudFormation parameters can be defined in the AWS CDK, they are generally discouraged because AWS CloudFormation parameters are resolved only during deployment\. This means that you cannot determine their value in your code\.
+This approach is conceptually different from how AWS CloudFormation templates are normally used, where a template can be deployed multiple times and parameterized through [AWS CloudFormation parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html). Although AWS CloudFormation parameters can be defined in the AWS CDK, they are generally discouraged because AWS CloudFormation parameters are resolved only during deployment. This means that you cannot determine their value in your code.
 
-For example, to conditionally include a resource in your app based on a parameter value, you must set up an [AWS CloudFormation condition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html) and tag the resource with it\. The AWS CDK takes an approach where concrete templates are resolved at synthesis time\. Therefore, you can use an `if` statement to check the value to determine whether a resource should be defined or some behavior should be applied\.
+For example, to conditionally include a resource in your app based on a parameter value, you must set up an [AWS CloudFormation condition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html) and tag the resource with it. The AWS CDK takes an approach where concrete templates are resolved at synthesis time. Therefore, you can use an `if` statement to check the value to determine whether a resource should be defined or some behavior should be applied.
 
 **Note**  
-The AWS CDK provides as much resolution as possible during synthesis time to enable idiomatic and natural usage of your programming language\.
+The AWS CDK provides as much resolution as possible during synthesis time to enable idiomatic and natural usage of your programming language.
 
-Like any other construct, stacks can be composed together into groups\. The following code shows an example of a service that consists of three stacks: a control plane, a data plane, and monitoring stacks\. The service construct is defined twice: once for the beta environment and once for the production environment\.
+Like any other construct, stacks can be composed together into groups. The following code shows an example of a service that consists of three stacks: a control plane, a data plane, and monitoring stacks. The service construct is defined twice: once for the beta environment and once for the production environment.
 
 ------
 #### [ TypeScript ]
@@ -603,7 +603,7 @@ public class MyApp {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 using Amazon.CDK;
@@ -776,7 +776,7 @@ proddataF7378CE5
 prodmon631A1083
 ```
 
-The physical names of the AWS CloudFormation stacks are automatically determined by the AWS CDK based on the stack's construct path in the tree\. By default, a stack's name is derived from the construct ID of the `Stack` object\. However, you can specify an explicit name by using the `stackName` prop \(in Python, `stack_name`\), as follows\.
+The physical names of the AWS CloudFormation stacks are automatically determined by the AWS CDK based on the stack's construct path in the tree. By default, a stack's name is derived from the construct ID of the `Stack` object. However, you can specify an explicit name by using the `stackName` prop (in Python, `stack_name`), as follows.
 
 ------
 #### [ TypeScript ]
@@ -808,7 +808,7 @@ new MyStack(this, "not:a:stack:name", StackProps.builder()
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 ```
 new MyStack(this, "not:a:stack:name", new StackProps
@@ -819,17 +819,17 @@ new MyStack(this, "not:a:stack:name", new StackProps
 
 ------
 
-### Working with nested stacks<a name="stack_nesting"></a>
+### Working with nested stacks<a name="stack-nesting"></a>
 
-A *nested stack* is a CDK stack that you create inside another stack, known as the parent stack\. You create nested stacks using the `[NestedStack](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.NestedStack.html)` construct\.
+A *nested stack* is a CDK stack that you create inside another stack, known as the parent stack. You create nested stacks using the `[NestedStack](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.NestedStack.html)` construct.
 
-By using nested stacks, you can organize resources across multiple stacks\. Nested stacks also offer a way around the AWS CloudFormation 500\-resource limit for stacks\. A nested stack counts as only one resource in the stack that contains it\. However, it can contain up to 500 resources, including additional nested stacks\.
+By using nested stacks, you can organize resources across multiple stacks. Nested stacks also offer a way around the AWS CloudFormation 500-resource limit for stacks. A nested stack counts as only one resource in the stack that contains it. However, it can contain up to 500 resources, including additional nested stacks.
 
-The scope of a nested stack must be a `Stack` or `NestedStack` construct\. The nested stack doesn't need to be declared lexically inside its parent stack\. It is necessary only to pass the parent stack as the first parameter \(`scope`\) when instantiating the nested stack\. Aside from this restriction, defining constructs in a nested stack works exactly the same as in an ordinary stack\.
+The scope of a nested stack must be a `Stack` or `NestedStack` construct. The nested stack doesn't need to be declared lexically inside its parent stack. It is necessary only to pass the parent stack as the first parameter (`scope`) when instantiating the nested stack. Aside from this restriction, defining constructs in a nested stack works exactly the same as in an ordinary stack.
 
-At synthesis time, the nested stack is synthesized to its own AWS CloudFormation template, which is uploaded to the AWS CDK staging bucket at deployment\. Nested stacks are bound to their parent stack and are not treated as independent deployment artifacts\. They aren't listed by `cdk list`, and they can't be deployed by `cdk deploy`\.
+At synthesis time, the nested stack is synthesized to its own AWS CloudFormation template, which is uploaded to the AWS CDK staging bucket at deployment. Nested stacks are bound to their parent stack and are not treated as independent deployment artifacts. They aren't listed by `cdk list`, and they can't be deployed by `cdk deploy`.
 
-References between parent stacks and nested stacks are automatically translated to stack parameters and outputs in the generated AWS CloudFormation templates, as with any [cross\-stack reference](resources.md#resource_stack)\.
+References between parent stacks and nested stacks are automatically translated to stack parameters and outputs in the generated AWS CloudFormation templates, as with any [cross-stack reference](resources.md#resource-stack).
 
 **Warning**  
-Changes in security posture are not displayed before deployment for nested stacks\. This information is displayed only for top\-level stacks\.
+Changes in security posture are not displayed before deployment for nested stacks. This information is displayed only for top-level stacks.

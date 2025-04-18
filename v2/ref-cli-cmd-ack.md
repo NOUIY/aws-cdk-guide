@@ -1,10 +1,10 @@
 # cdk acknowledge<a name="ref-cli-cmd-ack"></a>
 
-Acknowledge a notice by issue number and hide it from displaying again\.
+Acknowledge a notice by issue number and hide it from displaying again.
 
-This is useful to hide notices that have been addressed or do not apply to you\.
+This is useful to hide notices that have been addressed or do not apply to you.
 
-Acknowledgements are saved at a CDK project level\. If you acknowledge a notice in one CDK project, it will still display in other projects until acknowledged there\.
+Acknowledgements are saved at a CDK project level. If you acknowledge a notice in one CDK project, it will still display in other projects until acknowledged there.
 
 ## Usage<a name="ref-cli-cmd-ack-usage"></a>
 
@@ -15,16 +15,16 @@ $ cdk acknowledge <arguments> <options>
 ## Arguments<a name="ref-cli-cmd-ack-args"></a>
 
 **Notice ID**  <a name="ref-cli-cmd-ack-args-notice-id"></a>
-The ID of the notice\.  
+The ID of the notice.  
 *Type*: String  
 *Required*: No
 
 ## Options<a name="ref-cli-cmd-ack-options"></a>
 
-For a list of global options that work with all CDK CLI commands, see [Global options](ref-cli-cmd.md#ref-cli-cmd-options)\.
+For a list of global options that work with all CDK CLI commands, see [Global options](ref-cli-cmd.md#ref-cli-cmd-options).
 
 `--help, -h BOOLEAN`  <a name="ref-cli-cmd-ack-options-help"></a>
-Show command reference information for the `cdk acknowledge` command\.
+Show command reference information for the `cdk acknowledge` command.
 
 ## Examples<a name="ref-cli-cmd-ack-examples"></a>
 

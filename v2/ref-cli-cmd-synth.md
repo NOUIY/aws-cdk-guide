@@ -1,12 +1,12 @@
 # cdk synthesize<a name="ref-cli-cmd-synth"></a>
 
-Synthesize a CDK app to produce a cloud assembly, including an AWS CloudFormation template for each stack\.
+Synthesize a CDK app to produce a cloud assembly, including an AWS CloudFormation template for each stack.
 
-Cloud assemblies are files that include everything needed to deploy your app to your AWS environment\. For example, it includes a CloudFormation template for each stack in your app, and a copy of the file assets or Docker images that you reference in your app\.
+Cloud assemblies are files that include everything needed to deploy your app to your AWS environment. For example, it includes a CloudFormation template for each stack in your app, and a copy of the file assets or Docker images that you reference in your app.
 
-If your app contains a single stack or if a single stack is provided as an argument, the CloudFormation template will also be displayed in the standard output \(`stdout`\) in YAML format\.
+If your app contains a single stack or if a single stack is provided as an argument, the CloudFormation template will also be displayed in the standard output (`stdout`) in YAML format.
 
-If your app contains multiple stacks, `cdk synth` will synthesize the cloud assembly to `cdk.out`\.
+If your app contains multiple stacks, `cdk synth` will synthesize the cloud assembly to `cdk.out`.
 
 ## Usage<a name="ref-cli-cmd-synth-usage"></a>
 
@@ -17,23 +17,23 @@ $ cdk synthesize <arguments> <options>
 ## Arguments<a name="ref-cli-cmd-synth-args"></a>
 
 **CDK stack ID**  <a name="ref-cli-cmd-synth-args-stack-name"></a>
-The construct ID of the CDK stack from your app to synthesize\.  
+The construct ID of the CDK stack from your app to synthesize.  
 *Type*: String  
 *Required*: No
 
 ## Options<a name="ref-cli-cmd-synth-options"></a>
 
-For a list of global options that work with all CDK CLI commands, see [Global options](ref-cli-cmd.md#ref-cli-cmd-options)\.
+For a list of global options that work with all CDK CLI commands, see [Global options](ref-cli-cmd.md#ref-cli-cmd-options).
 
 `--exclusively, -e BOOLEAN`  <a name="ref-cli-cmd-synth-options-exclusively"></a>
-Only synthesize requested stacks, don't include dependencies\.
+Only synthesize requested stacks, don't include dependencies.
 
 `--help, -h BOOLEAN`  <a name="ref-cli-cmd-synth-options-help"></a>
-Show command reference information for the `cdk synthesize` command\.
+Show command reference information for the `cdk synthesize` command.
 
 `--quiet, -q BOOLEAN`  <a name="ref-cli-cmd-synth-options-quiet"></a>
-Do not output the CloudFormation template to `stdout`\.  
-This option can be configured in the CDK project’s `cdk.json` file\. The following is an example:  
+Do not output the CloudFormation template to `stdout`.  
+This option can be configured in the CDK project’s `cdk.json` file. The following is an example:  
 
 ```
 {
@@ -43,8 +43,8 @@ This option can be configured in the CDK project’s `cdk.json` file\. The follo
 *Default value*: `false`
 
 `--validation BOOLEAN`  <a name="ref-cli-cmd-synth-options-validation"></a>
-Validate the generated CloudFormation templates after synthesis by performing additional checks\.  
-You can also configure this option through the `validateOnSynth` attribute or `CDK_VALIDATION` environment variable\.  
+Validate the generated CloudFormation templates after synthesis by performing additional checks.  
+You can also configure this option through the `validateOnSynth` attribute or `CDK_VALIDATION` environment variable.  
 *Default value*: `true`
 
 ## Examples<a name="ref-cli-cmd-synth-examples"></a>
@@ -55,7 +55,7 @@ You can also configure this option through the `validateOnSynth` attribute or `C
 $ cdk synth MyStackName
 ```
 
-### Synthesize the cloud assembly for all stacks in a CDK app and save them into cdk\.out<a name="ref-cli-cmd-synth-examples-2"></a>
+### Synthesize the cloud assembly for all stacks in a CDK app and save them into cdk.out<a name="ref-cli-cmd-synth-examples-2"></a>
 
 ```
 $ cdk synth

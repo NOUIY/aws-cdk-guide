@@ -1,29 +1,29 @@
 # AWS CDK projects<a name="projects"></a>
 
-An AWS Cloud Development Kit \(AWS CDK\) project represents the files and folders that contain your CDK code\. Contents will vary based on your programming language\.
+An AWS Cloud Development Kit (AWS CDK) project represents the files and folders that contain your CDK code. Contents will vary based on your programming language.
 
-You can create your AWS CDK project manually or with the AWS CDK Command Line Interface \(AWS CDK CLI\) `cdk init` command\. In this topic, we will refer to the project structure and naming conventions of files and folders created by the AWS CDK CLI\. You can customize and organize your CDK projects to fit your needs\.
+You can create your AWS CDK project manually or with the AWS CDK Command Line Interface (AWS CDK CLI) `cdk init` command. In this topic, we will refer to the project structure and naming conventions of files and folders created by the AWS CDK CLI. You can customize and organize your CDK projects to fit your needs.
 
 **Note**  
-Project structure created by the AWS CDK CLI may vary across versions over time\.
+Project structure created by the AWS CDK CLI may vary across versions over time.
 
 ## Universal files and folders<a name="projects-universal"></a>
 
-**\.git**  <a name="projects-universal-git"></a>
-If you have `git` installed, the AWS CDK CLI automatically initializes a Git repository for your project\. The `.git` directory contains information about the repository\.
+**.git**  <a name="projects-universal-git"></a>
+If you have `git` installed, the AWS CDK CLI automatically initializes a Git repository for your project. The `.git` directory contains information about the repository.
 
-**\.gitignore**  <a name="projects-universal-gitignore"></a>
-Text file used by Git to specify files and folders to ignore\.
+**.gitignore**  <a name="projects-universal-gitignore"></a>
+Text file used by Git to specify files and folders to ignore.
 
-**README\.md**  <a name="projects-universal-readme"></a>
-Text file that provides you with basic guidance and important information for managing your AWS CDK project\. Modify this file as necessary to document important information regarding your CDK project\.
+**README.md**  <a name="projects-universal-readme"></a>
+Text file that provides you with basic guidance and important information for managing your AWS CDK project. Modify this file as necessary to document important information regarding your CDK project.
 
-**cdk\.json**  <a name="projects-universal-cdk"></a>
-Configuration file for the AWS CDK\. This file provides instruction to the AWS CDK CLI regarding how to run your app\.
+**cdk.json**  <a name="projects-universal-cdk"></a>
+Configuration file for the AWS CDK. This file provides instruction to the AWS CDK CLI regarding how to run your app.
 
-## Language\-specific files and folders<a name="projects-specific"></a>
+## Language-specific files and folders<a name="projects-specific"></a>
 
-The following files and folders are unique to each supported programming language\.
+The following files and folders are unique to each supported programming language.
 
 ------
 #### [ TypeScript ]
@@ -50,11 +50,11 @@ my-cdk-ts-project
 └── tsconfig.json
 ```
 
-**\.npmignore**  
-File that specifies which files and folders to ignore when publishing a package to the npm registry\. This file is similar to `.gitignore`, but is specific to npm packages\.
+**.npmignore**  
+File that specifies which files and folders to ignore when publishing a package to the npm registry. This file is similar to `.gitignore`, but is specific to npm packages.
 
-**bin/my\-cdk\-ts\-project\.ts**  
-The *application file* defines your CDK app\. CDK projects can contain one or more application files\. Application files are stored in the `bin` folder\.  
+**bin/my-cdk-ts-project.ts**  
+The *application file* defines your CDK app. CDK projects can contain one or more application files. Application files are stored in the `bin` folder.  
 The following is an example of a basic application file that defines a CDK app:  
 
 ```
@@ -67,11 +67,11 @@ const app = new cdk.App();
 new MyCdkTsProjectStack(app, 'MyCdkTsProjectStack');
 ```
 
-**jest\.config\.js**  
-Configuration file for Jest\. *Jest* is a popular JavaScript testing framework\.
+**jest.config.js**  
+Configuration file for Jest. *Jest* is a popular JavaScript testing framework.
 
-**lib/my\-cdk\-ts\-project\-stack\.ts**  
-The *stack file* defines your CDK stack\. Within your stack, you define AWS resources and properties using constructs\.  
+**lib/my-cdk-ts-project-stack.ts**  
+The *stack file* defines your CDK stack. Within your stack, you define AWS resources and properties using constructs.  
 The following is an example of a basic stack file that defines a CDK stack:  
 
 ```
@@ -87,21 +87,21 @@ export class MyCdkTsProjectStack extends cdk.Stack {
 }
 ```
 
-**node\_modules**  
-Common folder in Node\.js projects that contain dependencies for your project\.
+**node\$1modules**  
+Common folder in Node.js projects that contain dependencies for your project.
 
-**package\-lock\.json**  
-Metadata file that works with the `package.json` file to manage versions of dependencies\.
+**package-lock.json**  
+Metadata file that works with the `package.json` file to manage versions of dependencies.
 
-**package\.json**  
-Metadata file that is commonly used in Node\.js projects\. This file contains information about your CDK project such as the project name, script definitions, dependencies, and other import project\-level information\.
+**package.json**  
+Metadata file that is commonly used in Node.js projects. This file contains information about your CDK project such as the project name, script definitions, dependencies, and other import project-level information.
 
-**test/my\-cdk\-ts\-project\.test\.ts**  
-A test folder is created to organize tests for your CDK project\. A sample test file is also created\.  
-You can write tests in TypeScript and use Jest to compile your TypeScript code before running tests\.
+**test/my-cdk-ts-project.test.ts**  
+A test folder is created to organize tests for your CDK project. A sample test file is also created.  
+You can write tests in TypeScript and use Jest to compile your TypeScript code before running tests.
 
-**tsconfig\.json**  
-Configuration file used in TypeScript projects that specifies compiler options and project settings\.
+**tsconfig.json**  
+Configuration file used in TypeScript projects that specifies compiler options and project settings.
 
 ------
 #### [ JavaScript ]
@@ -127,11 +127,11 @@ my-cdk-js-project
     └── my-cdk-js-project.test.js
 ```
 
-**\.npmignore**  
-File that specifies which files and folders to ignore when publishing a package to the npm registry\. This file is similar to `.gitignore`, but is specific to npm packages\.
+**.npmignore**  
+File that specifies which files and folders to ignore when publishing a package to the npm registry. This file is similar to `.gitignore`, but is specific to npm packages.
 
-**bin/my\-cdk\-js\-project\.js**  
-The *application file* defines your CDK app\. CDK projects can contain one or more application files\. Application files are stored in the `bin` folder\.  
+**bin/my-cdk-js-project.js**  
+The *application file* defines your CDK app. CDK projects can contain one or more application files. Application files are stored in the `bin` folder.  
 The following is an example of a basic application file that defines a CDK app:  
 
 ```
@@ -144,11 +144,11 @@ const app = new cdk.App();
 new MyCdkJsProjectStack(app, 'MyCdkJsProjectStack');
 ```
 
-**jest\.config\.js**  
-Configuration file for Jest\. *Jest* is a popular JavaScript testing framework\.
+**jest.config.js**  
+Configuration file for Jest. *Jest* is a popular JavaScript testing framework.
 
-**lib/my\-cdk\-js\-project\-stack\.js**  
-The *stack file* defines your CDK stack\. Within your stack, you define AWS resources and properties using constructs\.  
+**lib/my-cdk-js-project-stack.js**  
+The *stack file* defines your CDK stack. Within your stack, you define AWS resources and properties using constructs.  
 The following is an example of a basic stack file that defines a CDK stack:  
 
 ```
@@ -165,18 +165,18 @@ class MyCdkJsProjectStack extends Stack {
 module.exports = { MyCdkJsProjectStack }
 ```
 
-**node\_modules**  
-Common folder in Node\.js projects that contain dependencies for your project\.
+**node\$1modules**  
+Common folder in Node.js projects that contain dependencies for your project.
 
-**package\-lock\.json**  
-Metadata file that works with the `package.json` file to manage versions of dependencies\.
+**package-lock.json**  
+Metadata file that works with the `package.json` file to manage versions of dependencies.
 
-**package\.json**  
-Metadata file that is commonly used in Node\.js projects\. This file contains information about your CDK project such as the project name, script definitions, dependencies, and other import project\-level information\.
+**package.json**  
+Metadata file that is commonly used in Node.js projects. This file contains information about your CDK project such as the project name, script definitions, dependencies, and other import project-level information.
 
-**test/my\-cdk\-js\-project\.test\.js**  
-A test folder is created to organize tests for your CDK project\. A sample test file is also created\.  
-You can write tests in JavaScript and use Jest to compile your JavaScript code before running tests\.
+**test/my-cdk-js-project.test.js**  
+A test folder is created to organize tests for your CDK project. A sample test file is also created.  
+You can write tests in JavaScript and use Jest to compile your JavaScript code before running tests.
 
 ------
 #### [ Python ]
@@ -202,11 +202,11 @@ my-cdk-py-project
     └── unit
 ```
 
-**\.venv**  
-The CDK CLI automatically creates a virtual environment for your project\. The `.venv` directory refers to this virtual environment\.
+**.venv**  
+The CDK CLI automatically creates a virtual environment for your project. The `.venv` directory refers to this virtual environment.
 
-**app\.py**  
-The *application file* defines your CDK app\. CDK projects can contain one or more application files\.  
+**app.py**  
+The *application file* defines your CDK app. CDK projects can contain one or more application files.  
 The following is an example of a basic application file that defines a CDK app:  
 
 ```
@@ -223,10 +223,10 @@ MyCdkPyProjectStack(app, "MyCdkPyProjectStack")
 app.synth()
 ```
 
-**my\_cdk\_py\_project**  
-Directory that contains your *stack files*\. The CDK CLI creates the following here:  
-+ `__init__.py ` – An empty Python package definition file\.
-+ `my_cdk_py_project` – File that defines your CDK stack\. You then define AWS resources and properties within the stack using constructs\.
+**my\$1cdk\$1py\$1project**  
+Directory that contains your *stack files*. The CDK CLI creates the following here:  
++ `__init__.py ` – An empty Python package definition file.
++ `my_cdk_py_project` – File that defines your CDK stack. You then define AWS resources and properties within the stack using constructs.
 The following is an example of a stack file:  
 
 ```
@@ -241,17 +241,17 @@ class MyCdkPyProjectStack(Stack):
   # code that defines your resources and properties go here
 ```
 
-**requirements\-dev\.txt**  
-File similar to `requirements.txt`, but used to manage dependencies specifically for development purposes rather than production\.
+**requirements-dev.txt**  
+File similar to `requirements.txt`, but used to manage dependencies specifically for development purposes rather than production.
 
-**requirements\.txt**  
-Common file used in Python projects to specify and manage project dependencies\.
+**requirements.txt**  
+Common file used in Python projects to specify and manage project dependencies.
 
-**source\.bat**  
-Batch file for Windows that is used to set up the Python virtual environment\.
+**source.bat**  
+Batch file for Windows that is used to set up the Python virtual environment.
 
 **tests**  
-Directory that contains tests for your CDK project\.  
+Directory that contains tests for your CDK project.  
 The following is an example of a unit test:  
 
 ```
@@ -287,11 +287,11 @@ my-cdk-java-project
     └── test
 ```
 
-**pom\.xml**  
-File that contains configuration information and metadata about your CDK project\. This file is a part of Maven\.
+**pom.xml**  
+File that contains configuration information and metadata about your CDK project. This file is a part of Maven.
 
 **src/main**  
-Directory containing your *application* and *stack* files\.  
+Directory containing your *application* and *stack* files.  
 The following is an example application file:  
 
 ```
@@ -337,7 +337,7 @@ public class MyCdkJavaProjectStack extends Stack {
 ```
 
 **src/test**  
-Directory containing your test files\. The following is an example:  
+Directory containing your test files. The following is an example:  
 
 ```
 package com.myorg;
@@ -367,7 +367,7 @@ public class MyCdkJavaProjectTest {
 ```
 
 ------
-#### [ C\# ]
+#### [ C\$1 ]
 
 The following is an example project created in the `my-cdk-csharp-project` directory using the `cdk init --language csharp` command:
 
@@ -383,7 +383,7 @@ my-cdk-csharp-project
 ```
 
 **src/MyCdkCsharpProject**  
-Directory containing your *application* and *stack* files\.  
+Directory containing your *application* and *stack* files.  
 The following is an example application file:  
 
 ```
@@ -423,11 +423,11 @@ namespace MyCdkCsharpProject
 }
 ```
 This directory also contains the following:  
-+ `GlobalSuppressions.cs` – File used to suppress specific compiler warnings or errors across your project\.
-+ `.csproj` – XML\-based file used to define project settings, dependencies, and build configurations\.
++ `GlobalSuppressions.cs` – File used to suppress specific compiler warnings or errors across your project.
++ `.csproj` – XML-based file used to define project settings, dependencies, and build configurations.
 
-**src/MyCdkCsharpProject\.sln**  
-Microsoft Visual Studio Solution File used to organize and manage related projects\.
+**src/MyCdkCsharpProject.sln**  
+Microsoft Visual Studio Solution File used to organize and manage related projects.
 
 ------
 #### [ Go ]
@@ -445,11 +445,11 @@ my-cdk-go-project
 └── my-cdk-go-project_test.go
 ```
 
-**go\.mod**  
-File that contains module information and is used to manage dependencies and versioning for your Go project\.
+**go.mod**  
+File that contains module information and is used to manage dependencies and versioning for your Go project.
 
-**my\-cdk\-go\-project\.go**  
-File that defines your CDK application and stacks\.  
+**my-cdk-go-project.go**  
+File that defines your CDK application and stacks.  
 The following is an example:  
 
 ```
@@ -492,8 +492,8 @@ func env() *awscdk.Environment {
 }
 ```
 
-**my\-cdk\-go\-project\_test\.go**  
-File that defines a sample test\.  
+**my-cdk-go-project\$1test.go**  
+File that defines a sample test.  
 The following is an example:  
 
 ```
